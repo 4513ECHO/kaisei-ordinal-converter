@@ -1,0 +1,6 @@
+@import "tailwindcss" source("../app");
+
+@utility text-contrast-bg-* {
+  background-color: --value(--color-*, [*]);
+  color: lch(from --value(--color-*, [*]) calc(100 - round(l, 100)) 0 0);
+}
