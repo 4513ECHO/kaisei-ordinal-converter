@@ -18,7 +18,15 @@ export default createRoute((c) => {
       </p>
       <h2 className="text-xl py-2 font-bold">お問い合わせ</h2>
       <p>
-        バグ報告・機能追加・要望などは響（<a href="//x.com/4513echo">
+        バグ報告・機能追加・要望などは<a
+          href="//github.com/4513ECHO/kaisei-ordinal-converter"
+          className="text-sky-600 hover:underline"
+        >
+          GitHubリポジトリ
+        </a>か響（<a
+          className="text-sky-600 hover:underline"
+          href="//x.com/4513echo"
+        >
           Twitter
         </a>）までお願いします。
       </p>
