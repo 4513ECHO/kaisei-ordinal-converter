@@ -25,17 +25,17 @@ export default function ClassSelector() {
             setData({ ...data, ordinal: value });
           }
         }}
-        value={data.ordinal}
+        value={data.ordinal ?? ""}
         required
       />
       代
       <select
         style={{ "--bg-color": data.color } as CSSProperties}
-        className={`inline-block rounded-md text-md p-2 mx-2 ${
+        className={`inline-block rounded-md text-md px-4 py-2 mx-2 ${
           data.color ? "text-contrast-bg-(--bg-color)" : "bg-sky-100"
         } `}
         onChange={(e) => setData({ ...data, color: e.target.value })}
-        value={data?.color}
+        value={data.color ?? ""}
         name="color"
         required
       >

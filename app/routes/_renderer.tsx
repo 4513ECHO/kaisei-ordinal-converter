@@ -13,7 +13,7 @@ export default reactRenderer(({ children }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{title}</title>
         <meta name="description" content={description} />
-        <meta name="og:title" content={title}/>
+        <meta name="og:title" content={title} />
         <meta name="og:description" content={description} />
         <meta
           name="og:link"

@@ -17,7 +17,7 @@ export default function Form() {
   const [kind, setKind] = useState<[string, string]>(["class", ""]);
   const [data, setData] = useState<{ ordinal?: number; color?: string }>({});
   const [year, setYear] = useState(new Date().getFullYear());
-  const [fesOrdinal, setFesOrdinal] = useState<number>(0);
+  const [fesOrdinal, setFesOrdinal] = useState<number>();
   const [result, setResult] = useState<string | JSX.Element | null>(null);
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -39,7 +39,7 @@ export default function Form() {
         setResult(showYearResult(year, query));
         break;
       case "fes_ordinal":
-        setResult(showFesOrdinalResult(fesOrdinal, query));
+        setResult(showFesOrdinalResult(fesOrdinal!, query));
         break;
     }
   }

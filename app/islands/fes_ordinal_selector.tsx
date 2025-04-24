@@ -13,12 +13,12 @@ export default function FesOrdinalSelector() {
   return (
     <p className="p-4">
       <input
-        className="rounded-md text-md p-2 mx-2 max-w-[6em] border-1 border-sky-500 focus:border-3 user-invalid:border-rose-500"
+        className="rounded-md text-md text-end p-2 mx-2 max-w-[6em] border-1 border-sky-500 focus:border-3 user-invalid:border-rose-500"
         type="number"
         min={1}
-        placeholder="154"
+        placeholder="154th"
         name="fes_ordinal"
-        value={fesOrdinal}
+        value={fesOrdinal ?? ""}
         onChange={(e) => {
           const value = Number(e.target.value);
           if (Number.isSafeInteger(value)) {
@@ -27,7 +27,7 @@ export default function FesOrdinalSelector() {
         }}
         required
       />
-      {getOrdinalSuffix(fesOrdinal)}
+      {fesOrdinal && getOrdinalSuffix(fesOrdinal!)}
       運動会
     </p>
   );

@@ -16,7 +16,7 @@ export const YearContext = createContext<
 >([0, () => {}]);
 
 export const FesOrdinalContext = createContext<
-  [number, Dispatch<SetStateAction<number>>]
+  [number | undefined, Dispatch<SetStateAction<number | undefined>>]
 >([0, () => {}]);
 
 export type Query =
@@ -36,18 +36,12 @@ export const colorData: Record<string, [string, number]> = {
   black: ["黒", 1976],
 };
 
+const suffixes = ["th", "st", "nd", "rd"] as const;
 export function getOrdinalSuffix(ordinal: number): string {
-  const suffixes = ["", "st", "nd", "rd"];
-  const suffix = ordinal % 10 > 3 || ordinal % 10 === 0
-    ? "th"
-    : suffixes[ordinal % 10]!;
-  return suffix;
+  const mod100 = ordinal % 100;
+  return suffixes[(mod100 - 20) % 10] ?? suffixes[mod100] ?? suffixes[0];
 }
 
 export function withOrdinalSuffix(ordinal: number): string {
-  const suffixes = ["", "st", "nd", "rd"];
-  const suffix = ordinal % 10 > 3 || ordinal % 10 === 0
-    ? "th"
-    : suffixes[ordinal % 10]!;
-  return ordinal + suffix;
+  return ordinal + getOrdinalSuffix(ordinal);
 }

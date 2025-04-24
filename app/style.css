@@ -1,5 +1,11 @@
 @import "tailwindcss" source("../app");
 
+@supports (-webkit-appearance: none) {
+  select {
+    -webkit-appearance: none;
+  }
+}
+
 @utility text-contrast-bg-* {
   background-color: --value(--color-*, [*]);
   color: lch(from --value(--color-*, [*]) calc(100 - round(l, 100)) 0 0);
