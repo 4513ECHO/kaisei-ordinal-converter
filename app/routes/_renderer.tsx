@@ -19,7 +19,7 @@ export default reactRenderer(({ children }) => {
           name="og:link"
           content="https://kaisei-ordinal-converter.4513echo.dev/"
         />
-        {/* <link rel="icon" href="/favicon.ico" /> */}
+        <link rel="icon" href="/favicon.ico" />
         <Script src="/app/client.ts" async />
         <Link rel="stylesheet" href="/app/style.css" />
       </head>
