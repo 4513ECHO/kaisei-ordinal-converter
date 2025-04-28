@@ -1,12 +1,34 @@
 @import "tailwindcss" source("../app");
 
-@supports (-webkit-appearance: none) {
+@layer base {
   select {
-    -webkit-appearance: none;
+    @apply appearance-none cursor-pointer;
   }
 }
 
 @utility text-contrast-bg-* {
   background-color: --value(--color-*, [*]);
   color: lch(from --value(--color-*, [*]) calc(100 - round(l, 100)) 0 0);
+}
+
+.picker-icon {
+  @apply relative inline-block;
+
+  &::after {
+    @apply absolute pointer-events-none size-2 mask-center mask-no-repeat;
+    content: "";
+    top: calc(50% - --spacing(0.5));
+    right: calc(1rem - --spacing(0.5));
+    mask-image: url('data:image/svg+xml,<svg viewBox="0 0 6 4" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,1 3,3 5,1"/></svg>');
+    background-color: #333;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  &:has(> select:active)::after {
+    transform: rotate(180deg);
+  }
+
+  &:has(> select.text-contrast-bg-\(--bg-color\))::after {
+    background-color: lch(from var(--bg-color) calc(100 - round(l, 100)) 0 0);
+  }
 }

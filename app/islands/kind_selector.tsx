@@ -16,7 +16,7 @@ function SwapIcon() {
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="not-md:hidden"
+        className="not-sm:hidden"
       >
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
         <path d="M21 7l-18 0" />
@@ -34,7 +34,7 @@ function SwapIcon() {
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="md:hidden"
+        className="sm:hidden"
       >
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
         <path d="M7 3l0 18" />
@@ -50,22 +50,24 @@ export default function KindSelector() {
   const [kind, setKind] = useContext(KindContext);
 
   return (
-    <div className="mx-auto md:flex md:items-center">
-      <select
-        className="inline-block rounded-md text-md p-2 mx-2 md:my-4 bg-sky-100 text-end"
-        name="kind_from"
-        value={kind[0]}
-        onChange={(e) => setKind([e.target.value, kind[1]])}
-        required
-      >
-        <option value="year">年度</option>
-        <option value="fes_ordinal">回数</option>
-        <option value="class">組</option>
-      </select>
+    <div className="mx-auto sm:flex sm:items-center">
+      <div className="picker-icon">
+        <select
+          className="inline-block rounded-md text-md text-end w-16 p-2 pr-5 mx-2 bg-sky-100"
+          name="kind_from"
+          value={kind[0]}
+          onChange={(e) => setKind([e.target.value, kind[1]])}
+          required
+        >
+          <option value="year">年度</option>
+          <option value="fes_ordinal">回数</option>
+          <option value="class">組</option>
+        </select>
+      </div>
       <span>から</span>
       <button
         type="button"
-        className="w-10 h-10 mx-2 rounded-md p-2 hover:bg-sky-100 place-content-center block md:inline-block"
+        className="w-10 h-10 mx-2 rounded-md p-2 hover:bg-sky-100 place-content-center block sm:inline-block"
         onClick={() => {
           if (kind[1] !== "") {
             setKind([kind[1], kind[0]]);
@@ -74,20 +76,22 @@ export default function KindSelector() {
       >
         <SwapIcon />
       </button>
-      <select
-        className="inline-block rounded-md text-md p-2 mx-2 md:my-4 bg-sky-100 text-end"
-        name="kind_to"
-        value={kind[1]}
-        onChange={(e) => setKind([kind[0], e.target.value])}
-        required
-      >
-        <option value="" hidden></option>
-        <option value="year" disabled={kind[0] === "year"}>年度</option>
-        <option value="fes_ordinal" disabled={kind[0] === "fes_ordinal"}>
-          回数
-        </option>
-        <option value="class" disabled={kind[0] === "class"}>組</option>
-      </select>
+      <div className="picker-icon">
+        <select
+          className="inline-block rounded-md text-md text-end w-16 p-2 pr-5 mx-2 bg-sky-100"
+          name="kind_to"
+          value={kind[1]}
+          onChange={(e) => setKind([kind[0], e.target.value])}
+          required
+        >
+          <option value="" hidden></option>
+          <option value="year" disabled={kind[0] === "year"}>年度</option>
+          <option value="fes_ordinal" disabled={kind[0] === "fes_ordinal"}>
+            回数
+          </option>
+          <option value="class" disabled={kind[0] === "class"}>組</option>
+        </select>
+      </div>
       <span>に</span>
     </div>
   );
