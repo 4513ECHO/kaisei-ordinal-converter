@@ -7,7 +7,7 @@ import {
   withOrdinalSuffix,
 } from "./utils.ts";
 
-export default function ClassSelector() {
+export default function TeamSelector() {
   const [state, _, handleChange] = useContext(Context);
   return (
     <div className="p-4">
@@ -18,7 +18,7 @@ export default function ClassSelector() {
         min={1}
         placeholder="80"
         name="team_ordinal"
-        onChange={handleChange("setClassOrdinal")}
+        onChange={handleChange("setTeamOrdinal")}
         value={state.team.ordinal}
         required
       />
@@ -31,7 +31,7 @@ export default function ClassSelector() {
           className={`inline-block rounded-md text-md pl-4 pr-5 py-2 mx-2 ${
             state.team.color ? "text-contrast-bg-(--bg-color)" : "bg-sky-100"
           }`}
-          onChange={handleChange("setClassColor")}
+          onChange={handleChange("setTeamColor")}
           value={state.team.color}
           name="team_color"
           required
@@ -52,7 +52,7 @@ export default function ClassSelector() {
   );
 }
 
-export function showClassResult(state: State): string {
+export function showTeamResult(state: State): string {
   if (state.team.ordinal === "" || state.team.color === "") {
     throw new Error("Invalid ordinal");
   }

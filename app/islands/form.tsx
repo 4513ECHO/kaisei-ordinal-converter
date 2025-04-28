@@ -5,9 +5,9 @@ import {
   useReducer,
   useState,
 } from "react";
-import { Context, initialState, reducer } from "./state.ts";
+import { type Action, Context, initialState, reducer } from "./state.ts";
 import YearSelector, { showYearResult } from "./year_selector.tsx";
-import ClassSelector, { showClassResult } from "./class_selector.tsx";
+import TeamSelector, { showTeamResult } from "./team_selector.tsx";
 import KindSelector from "./kind_selector.tsx";
 import FesOrdinalSelector, {
   showFesOrdinalResult,
@@ -15,12 +15,9 @@ import FesOrdinalSelector, {
 
 export default function Form() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  function handleChange(type: string) {
+  function handleChange(type: Action["type"]) {
     return (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
-      dispatch({
-        type: type as Parameters<typeof dispatch>[0]["type"],
-        payload: e.target.value,
-      });
+      dispatch({ type: type, payload: e.target.value });
   }
   const [result, setResult] = useState<string | JSX.Element | null>(null);
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -28,7 +25,7 @@ export default function Form() {
     console.log({ state });
     switch (state.kind.from) {
       case "team":
-        setResult(showClassResult(state));
+        setResult(showTeamResult(state));
         break;
       case "year":
         setResult(showYearResult(state));
@@ -47,7 +44,7 @@ export default function Form() {
           : state.kind.from === "fes_ordinal"
           ? <FesOrdinalSelector />
           : state.kind.from === "team"
-          ? <ClassSelector />
+          ? <TeamSelector />
           : <p>Invalid kind: {state.kind.from}</p>}
       </Context>
 

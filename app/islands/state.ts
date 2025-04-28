@@ -137,7 +137,7 @@ export const Context = createContext<
     state: State,
     dispatch: ActionDispatch<[action: Action]>,
     handleChange: (
-      type: string,
+      type: Action["type"],
     ) => (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void,
   ]
 >([initialState, () => {}, () => () => {}]);
