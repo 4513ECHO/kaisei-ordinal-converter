@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { KindContext } from "./context.ts";
+import { Context } from "./state.ts";
 
 function SwapIcon() {
   // NOTE: These icons are copied from Tabler Icons, under the following license
@@ -47,32 +47,27 @@ function SwapIcon() {
 }
 
 export default function KindSelector() {
-  const [kind, setKind] = useContext(KindContext);
-
+  const [state, dispatch, handleChange] = useContext(Context);
   return (
     <div className="mx-auto sm:flex sm:items-center">
       <div className="picker-icon">
         <select
           className="inline-block rounded-md text-md text-end w-16 p-2 pr-5 mx-2 bg-sky-100"
           name="kind_from"
-          value={kind[0]}
-          onChange={(e) => setKind([e.target.value, kind[1]])}
+          value={state.kind.from}
+          onChange={handleChange("setKindFrom")}
           required
         >
           <option value="year">年度</option>
           <option value="fes_ordinal">回数</option>
-          <option value="class">組</option>
+          <option value="team">組</option>
         </select>
       </div>
       <span>から</span>
       <button
         type="button"
         className="w-10 h-10 mx-2 rounded-md p-2 hover:bg-sky-100 place-content-center block sm:inline-block"
-        onClick={() => {
-          if (kind[1] !== "") {
-            setKind([kind[1], kind[0]]);
-          }
-        }}
+        onClick={() => dispatch({ type: "swapKind" })}
       >
         <SwapIcon />
       </button>
@@ -80,16 +75,23 @@ export default function KindSelector() {
         <select
           className="inline-block rounded-md text-md text-end w-16 p-2 pr-5 mx-2 bg-sky-100"
           name="kind_to"
-          value={kind[1]}
-          onChange={(e) => setKind([kind[0], e.target.value])}
+          value={state.kind.to}
+          onChange={handleChange("setKindTo")}
           required
         >
           <option value="" hidden></option>
-          <option value="year" disabled={kind[0] === "year"}>年度</option>
-          <option value="fes_ordinal" disabled={kind[0] === "fes_ordinal"}>
+          <option value="year" disabled={state.kind.from === "year"}>
+            年度
+          </option>
+          <option
+            value="fes_ordinal"
+            disabled={state.kind.from === "fes_ordinal"}
+          >
             回数
           </option>
-          <option value="class" disabled={kind[0] === "class"}>組</option>
+          <option value="team" disabled={state.kind.from === "team"}>
+            組
+          </option>
         </select>
       </div>
       <span>に</span>

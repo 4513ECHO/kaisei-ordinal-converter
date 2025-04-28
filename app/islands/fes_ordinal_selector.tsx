@@ -1,15 +1,15 @@
 import { useContext } from "react";
+import { colors, Context, type State } from "./state.ts";
 import {
-  colorData,
   fesFirstYear,
-  FesOrdinalContext,
+  formatTeam,
   getOrdinalSuffix,
-  type Query,
+  getTeamFirstYear,
   withOrdinalSuffix,
-} from "./context.ts";
+} from "./utils.ts";
 
 export default function FesOrdinalSelector() {
-  const [fesOrdinal, setFesOrdinal] = useContext(FesOrdinalContext);
+  const [state, _, handleChange] = useContext(Context);
   return (
     <p className="p-4">
       <input
@@ -18,35 +18,37 @@ export default function FesOrdinalSelector() {
         min={1}
         placeholder="154th"
         name="fes_ordinal"
-        value={fesOrdinal ?? ""}
-        onChange={(e) => {
-          const value = Number(e.target.value);
-          if (Number.isSafeInteger(value)) {
-            setFesOrdinal(value);
-          }
-        }}
+        value={state.fesOrdinal}
+        onChange={handleChange("setFesOrdinal")}
         required
       />
-      {fesOrdinal && getOrdinalSuffix(fesOrdinal!)}
+      {state.fesOrdinal && getOrdinalSuffix(state.fesOrdinal)}
       運動会
     </p>
   );
 }
 
-export function showFesOrdinalResult(data: number, query: Query) {
-  switch (query.kind) {
+export function showFesOrdinalResult(state: State) {
+  const { fesOrdinal } = state;
+  if (fesOrdinal === "") {
+    throw new Error("Fes ordinal is not set");
+  }
+  switch (state.kind.to) {
     case "year":
-      return `${withOrdinalSuffix(data)}運動会が開催されたのは${
-        fesFirstYear + data - 1
+      return `${withOrdinalSuffix(fesOrdinal)}運動会が開催されたのは${
+        fesFirstYear + fesOrdinal - 1
       }年度です。`;
-    case "class":
+    case "team":
       return (
         <div>
-          {withOrdinalSuffix(data)}運動会の組は
+          {withOrdinalSuffix(fesOrdinal)}運動会の組は
           <ul className="list-disc list-inside">
-            {Object.entries(colorData).map(([color, [name, firstYear]]) => (
+            {colors.map((color) => (
               <li key={color}>
-                第{fesFirstYear + data - firstYear}代{name}組
+                {formatTeam(
+                  color,
+                  fesFirstYear + fesOrdinal - getTeamFirstYear(color),
+                )}
               </li>
             ))}
           </ul>
@@ -54,6 +56,6 @@ export function showFesOrdinalResult(data: number, query: Query) {
         </div>
       );
     default:
-      throw new Error("Invalid kind");
+      throw new Error(`Invalid kind: ${state.kind.to}`);
   }
 }

@@ -1,15 +1,14 @@
 import { type CSSProperties, useContext } from "react";
+import { Context, type State } from "./state.ts";
 import {
-  ClassContext,
-  colorData,
   fesFirstYear,
-  type Query,
+  formatTeam,
+  getTeamFirstYear,
   withOrdinalSuffix,
-} from "./context.ts";
+} from "./utils.ts";
 
 export default function ClassSelector() {
-  const [data, setData] = useContext(ClassContext);
-
+  const [state, _, handleChange] = useContext(Context);
   return (
     <div className="p-4">
       第
@@ -18,28 +17,23 @@ export default function ClassSelector() {
         type="number"
         min={1}
         placeholder="80"
-        name="ordinal"
-        onChange={(e) => {
-          const value = Number(e.target.value);
-          if (Number.isSafeInteger(value)) {
-            setData({ ...data, ordinal: value });
-          }
-        }}
-        value={data.ordinal ?? ""}
+        name="team_ordinal"
+        onChange={handleChange("setClassOrdinal")}
+        value={state.team.ordinal}
         required
       />
       代
       <div
         className="picker-icon"
-        style={{ "--bg-color": data.color } as CSSProperties}
+        style={{ "--bg-color": state.team.color } as CSSProperties}
       >
         <select
           className={`inline-block rounded-md text-md pl-4 pr-5 py-2 mx-2 ${
-            data.color ? "text-contrast-bg-(--bg-color)" : "bg-sky-100"
+            state.team.color ? "text-contrast-bg-(--bg-color)" : "bg-sky-100"
           }`}
-          onChange={(e) => setData({ ...data, color: e.target.value })}
-          value={data.color ?? ""}
-          name="color"
+          onChange={handleChange("setClassColor")}
+          value={state.team.color}
+          name="team_color"
           required
         >
           <option value="" hidden></option>
@@ -58,23 +52,24 @@ export default function ClassSelector() {
   );
 }
 
-export function showClassResult(
-  data: { ordinal: number; color: string },
-  query: Query,
-): string {
-  const className = `第${data.ordinal}代${colorData[data.color]![0]}組`;
-  switch (query.kind) {
+export function showClassResult(state: State): string {
+  if (state.team.ordinal === "" || state.team.color === "") {
+    throw new Error("Invalid ordinal");
+  }
+  const className = formatTeam(state.team.color, state.team.ordinal);
+  switch (state.kind.to) {
     case "fes_ordinal":
       return `${className}は${
         withOrdinalSuffix(
-          colorData[data.color]![1] - fesFirstYear + data.ordinal,
+          getTeamFirstYear(state.team.color) - fesFirstYear +
+            state.team.ordinal,
         )
       }運動会の組です。`;
     case "year":
       return `${className}は${
-        data.ordinal + colorData[data.color]![1] - 1
+        state.team.ordinal + getTeamFirstYear(state.team.color) - 1
       }年度の組です。`;
     default:
-      throw new Error("Invalid kind");
+      throw new Error(`Invalid kind: ${state.kind.to}`);
   }
 }

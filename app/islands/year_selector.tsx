@@ -1,14 +1,14 @@
 import { useContext } from "react";
+import { colors, Context, type State } from "./state.ts";
 import {
-  colorData,
   fesFirstYear,
-  type Query,
+  formatTeam,
+  getTeamFirstYear,
   withOrdinalSuffix,
-  YearContext,
-} from "./context.ts";
+} from "./utils.ts";
 
 export default function YearSelector() {
-  const [year, setYear] = useContext(YearContext);
+  const [state, _, handleChange] = useContext(Context);
   return (
     <p className="p-4">
       <input
@@ -16,13 +16,8 @@ export default function YearSelector() {
         type="number"
         min={1872}
         placeholder="2025"
-        onChange={(e) => {
-          const value = Number(e.target.value);
-          if (Number.isSafeInteger(value)) {
-            setYear(value);
-          }
-        }}
-        value={year}
+        onChange={handleChange("setYear")}
+        value={state.year}
         name="year"
         required
       />
@@ -31,25 +26,31 @@ export default function YearSelector() {
   );
 }
 
-export function showYearResult(data: number, query: Query) {
-  switch (query.kind) {
+export function showYearResult(state: State) {
+  const { year } = state;
+  if (year === "") {
+    throw new Error("Year is not set");
+  }
+  switch (state.kind.to) {
     case "fes_ordinal":
-      return `${data}年度に開催されたのは${
-        withOrdinalSuffix(data - fesFirstYear + 1)
+      return `${state.year}年度に開催されたのは${
+        withOrdinalSuffix(year - fesFirstYear + 1)
       }運動会です。`;
-    case "class":
+    case "team":
       return (
         <div>
-          {data}年度の組は
+          {state.year}年度の組は
           <ul className="list-disc list-inside">
-            {Object.entries(colorData).map(([color, [name, firstYear]]) => (
-              <li key={color}>第{data - firstYear + 1}代{name}組</li>
+            {colors.map((color) => (
+              <li key={color}>
+                {formatTeam(color, year - getTeamFirstYear(color) + 1)}
+              </li>
             ))}
           </ul>
           です。
         </div>
       );
     default:
-      throw new Error("Invalid kind");
+      throw new Error(`Invalid kind: ${state.kind.to}`);
   }
 }
