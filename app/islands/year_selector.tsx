@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import Input from "../components/Input.tsx";
 import { colors, Context, type State } from "./state.ts";
 import {
   fesFirstYear,
@@ -11,8 +12,8 @@ export default function YearSelector() {
   const [state, _, handleChange] = useContext(Context);
   return (
     <p className="p-4">
-      <input
-        className="rounded-md text-md p-2 mx-2 max-w-[6em] border-1 border-sky-500 focus:border-3 user-invalid:border-rose-500"
+      <Input
+        className="max-w-24"
         type="number"
         min={1872}
         placeholder="2025"

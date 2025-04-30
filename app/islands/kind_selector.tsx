@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import Select from "../components/Select.tsx";
 import { Context } from "./state.ts";
 
 function SwapIcon() {
@@ -8,8 +9,6 @@ function SwapIcon() {
     <>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -26,8 +25,6 @@ function SwapIcon() {
       </svg>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -49,10 +46,10 @@ function SwapIcon() {
 export default function KindSelector() {
   const [state, dispatch, handleChange] = useContext(Context);
   return (
-    <div className="mx-auto sm:flex sm:items-center">
-      <div className="picker-icon">
-        <select
-          className="inline-block rounded-md text-md text-end w-16 p-2 pr-5 mx-2 bg-sky-100"
+    <div className="sm:flex sm:items-center">
+      <label>
+        <span className="sr-only">変換元</span>
+        <Select
           name="kind_from"
           value={state.kind.from}
           onChange={handleChange("setKindFrom")}
@@ -61,19 +58,21 @@ export default function KindSelector() {
           <option value="year">年度</option>
           <option value="fes_ordinal">回数</option>
           <option value="team">組</option>
-        </select>
-      </div>
-      <span>から</span>
+        </Select>
+        <span>から</span>
+      </label>
       <button
         type="button"
-        className="w-10 h-10 mx-2 rounded-md p-2 hover:bg-sky-100 place-content-center block sm:inline-block"
+        className="block p-2 rounded-md sm:inline-block sm:mx-2 disabled:opacity-30 size-10 not-sm:m-2 not-disabled:hover:bg-sky-100"
         onClick={() => dispatch({ type: "swapKind" })}
+        disabled={state.kind.to === ""}
+        aria-label="変換対象を入れ替え"
       >
         <SwapIcon />
       </button>
-      <div className="picker-icon">
-        <select
-          className="inline-block rounded-md text-md text-end w-16 p-2 pr-5 mx-2 bg-sky-100"
+      <label>
+        <span className="sr-only">変換先</span>
+        <Select
           name="kind_to"
           value={state.kind.to}
           onChange={handleChange("setKindTo")}
@@ -92,9 +91,9 @@ export default function KindSelector() {
           <option value="team" disabled={state.kind.from === "team"}>
             組
           </option>
-        </select>
-      </div>
-      <span>に</span>
+        </Select>
+        <span>に</span>
+      </label>
     </div>
   );
 }

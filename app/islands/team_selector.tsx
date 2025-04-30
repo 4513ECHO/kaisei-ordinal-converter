@@ -1,4 +1,6 @@
-import { type CSSProperties, useContext } from "react";
+import { useContext } from "react";
+import Input from "../components/Input.tsx";
+import Select from "../components/Select.tsx";
 import { Context, type State } from "./state.ts";
 import {
   fesFirstYear,
@@ -12,8 +14,8 @@ export default function TeamSelector() {
   return (
     <div className="p-4">
       第
-      <input
-        className="rounded-md text-md  text-end p-2 mx-2 max-w-[4em] border-1 border-sky-500 focus:border-2 user-invalid:border-rose-500"
+      <Input
+        className="max-w-16"
         type="number"
         min={1}
         placeholder="80"
@@ -23,30 +25,24 @@ export default function TeamSelector() {
         required
       />
       代
-      <div
-        className="picker-icon"
-        style={{ "--bg-color": state.team.color } as CSSProperties}
+      <Select
+        style={{ "--bg-color": state.team.color }}
+        variant="team"
+        onChange={handleChange("setTeamColor")}
+        value={state.team.color}
+        name="team_color"
+        required
       >
-        <select
-          className={`inline-block rounded-md text-md pl-4 pr-5 py-2 mx-2 ${
-            state.team.color ? "text-contrast-bg-(--bg-color)" : "bg-sky-100"
-          }`}
-          onChange={handleChange("setTeamColor")}
-          value={state.team.color}
-          name="team_color"
-          required
-        >
-          <option value="" hidden></option>
-          <option value="purple">紫</option>
-          <option value="white">白</option>
-          <option value="blue">青</option>
-          <option value="green">緑</option>
-          <option value="orange">橙</option>
-          <option value="yellow">黄</option>
-          <option value="red">赤</option>
-          <option value="black">黒</option>
-        </select>
-      </div>
+        <option value="" hidden></option>
+        <option value="purple">紫</option>
+        <option value="white">白</option>
+        <option value="blue">青</option>
+        <option value="green">緑</option>
+        <option value="orange">橙</option>
+        <option value="yellow">黄</option>
+        <option value="red">赤</option>
+        <option value="black">黒</option>
+      </Select>
       組
     </div>
   );

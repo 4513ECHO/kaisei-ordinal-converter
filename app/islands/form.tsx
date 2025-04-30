@@ -49,13 +49,13 @@ export default function Form() {
       </Context>
 
       <button
-        className="rounded-md px-4 py-2 bg-sky-500 text-white hover:bg-sky-400"
+        className="py-2 px-4 text-white rounded-md bg-sky-500 hover:bg-sky-400"
         type="submit"
       >
         変換
       </button>
 
-      {result && <div className="pt-4">{result}</div>}
+      {result && <output className="block pt-4">{result}</output>}
     </form>
   );
 }
