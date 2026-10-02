@@ -1,8 +1,8 @@
-import { createRoute } from "honox/factory";
+import { define } from "@/utils.ts";
 import Form from "../islands/form.tsx";
 
-export default createRoute((c) => {
-  return c.render(
+export default define.page(function Home(_ctx) {
+  return (
     <div className="p-6 mx-auto max-w-3xl">
       <h1 className="py-2 text-2xl font-bold">開成大運動会 序数変換ツール</h1>
       <Form />
@@ -30,6 +30,6 @@ export default createRoute((c) => {
           Twitter
         </a>）までお願いします。
       </p>
-    </div>,
+    </div>
   );
 });

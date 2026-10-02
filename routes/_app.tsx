@@ -1,11 +1,10 @@
-import { reactRenderer } from "@hono/react-renderer";
-import { Link, Script } from "honox/server";
+import { define } from "@/utils.ts";
 
 const title = "開成大運動会 序数変換ツール";
 const description =
   "開成大運動会の開催年度・開催回数・各組が何代目かを相互に変換するツールです。";
 
-export default reactRenderer(({ children }) => {
+export default define.page(({ Component }) => {
   return (
     <html lang="ja">
       <head>
@@ -20,10 +19,10 @@ export default reactRenderer(({ children }) => {
           content="https://kaisei-ordinal-converter.4513echo.dev/"
         />
         <link rel="icon" href="/favicon.ico" />
-        <Script src="/app/client.ts" async />
-        <Link rel="stylesheet" href="/app/style.css" />
       </head>
-      <body>{children}</body>
+      <body>
+        <Component />
+      </body>
     </html>
   );
 });

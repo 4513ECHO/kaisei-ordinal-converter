@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext } from "preact/hooks";
 import Select from "../components/Select.tsx";
 import { Context } from "./state.ts";
 

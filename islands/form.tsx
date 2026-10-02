@@ -1,10 +1,5 @@
-import {
-  type ChangeEvent,
-  type FormEvent,
-  type JSX,
-  useReducer,
-  useState,
-} from "react";
+import type { JSX, TargetedEvent, TargetedSubmitEvent } from "preact";
+import { useReducer, useState } from "preact/hooks";
 import { type Action, Context, initialState, reducer } from "./state.ts";
 import YearSelector, { showYearResult } from "./year_selector.tsx";
 import TeamSelector, { showTeamResult } from "./team_selector.tsx";
@@ -16,11 +11,11 @@ import FesOrdinalSelector, {
 export default function Form() {
   const [state, dispatch] = useReducer(reducer, initialState);
   function handleChange(type: Action["type"]) {
-    return (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
-      dispatch({ type: type, payload: e.target.value });
+    return (e: TargetedEvent<HTMLInputElement | HTMLSelectElement>) =>
+      dispatch({ type: type, payload: e.currentTarget.value });
   }
   const [result, setResult] = useState<string | JSX.Element | null>(null);
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: TargetedSubmitEvent<HTMLFormElement>) {
     e.preventDefault();
     console.log({ state });
     switch (state.kind.from) {

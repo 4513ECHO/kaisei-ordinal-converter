@@ -1,4 +1,4 @@
-import type { ComponentProps } from "react";
+import type { ComponentProps } from "preact";
 import { clsx } from "clsx";
 
 export default function Select(

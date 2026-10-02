@@ -1,4 +1,5 @@
-import { type ActionDispatch, type ChangeEvent, createContext } from "react";
+import { createContext, type TargetedEvent } from "preact";
+import type { Dispatch } from "preact/hooks";
 
 export const colors = [
   "purple",
@@ -135,9 +136,9 @@ export function reducer(state: State, action: Action): State {
 export const Context = createContext<
   [
     state: State,
-    dispatch: ActionDispatch<[action: Action]>,
+    dispatch: Dispatch<Action>,
     handleChange: (
       type: Action["type"],
-    ) => (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void,
+    ) => (e: TargetedEvent<HTMLInputElement | HTMLSelectElement>) => void,
   ]
 >([initialState, () => {}, () => () => {}]);

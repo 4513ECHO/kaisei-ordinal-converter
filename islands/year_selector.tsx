@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext } from "preact/hooks";
 import Input from "../components/Input.tsx";
 import { colors, Context, type State } from "./state.ts";
 import {

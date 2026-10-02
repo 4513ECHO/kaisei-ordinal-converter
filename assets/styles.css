@@ -1,4 +1,4 @@
-@import "tailwindcss" source("../app");
+@import "tailwindcss";
 
 @layer base {
   :focus-visible {
@@ -18,7 +18,8 @@
   color: lch(from --value(--color-*, [*]) calc(100 - round(l, 100)) 0 0);
 
   .picker-icon:has(> &)::after {
-    background-color: lch(from --value(--color-*, [*]) calc(100 - round(l, 100)) 0 0);
+    background-color: lch(from --value(--color-*, [*]) calc(100 - round(l, 100))
+      0 0);
   }
 }
 
