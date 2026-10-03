@@ -28,7 +28,7 @@ export default function TeamSelector() {
       <Select
         onChange={handleChange("setTeamColor")}
         class="pl-4 team"
-        style={{ "--team-color": state.team.color.value }}
+        style={{ "--team-color": state.team.color }}
         value={state.team.color}
         name="team_color"
         required
