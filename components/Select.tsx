@@ -1,23 +1,14 @@
 import type { ComponentProps } from "preact";
 import { clsx } from "clsx";
 
-export default function Select(
-  props:
-    & Omit<ComponentProps<"select">, "className" | "style">
-    & {
-      variant?: "team";
-      style?: Record<`--${string}`, string>; // Restrict to CSS variables
-    },
-) {
+export default function Select(props: ComponentProps<"select">) {
   return (
     <div className="picker-icon" style={props.style}>
       <select
         {...props}
         className={clsx(
-          "rounded-md text-md p-2 pr-5 mx-2",
-          props.variant === "team"
-            ? "pl-4 text-contrast-bg-[var(--bg-color,var(--color-sky-100))]"
-            : "bg-sky-100",
+          "rounded-md text-md p-2 pr-5 mx-2 bg-sky-100",
+          props.class,
         )}
       />
     </div>

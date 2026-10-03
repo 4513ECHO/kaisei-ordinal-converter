@@ -49,8 +49,7 @@ export default function Form() {
       >
         変換
       </button>
-
-      {result && <output className="block pt-4">{result}</output>}
+      <output className="block pt-4">{result}</output>
     </form>
   );
 }

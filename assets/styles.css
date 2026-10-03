@@ -13,17 +13,28 @@
   }
 }
 
-@utility text-contrast-bg-* {
-  background-color: --value(--color-*, [*]);
-  color: lch(from --value(--color-*, [*]) calc(100 - round(l, 100)) 0 0);
+.team {
+  background-color: var(--team-color, var(--color-sky-100));
+  color: lch(from var(--team-color, var(--color-sky-100))
+    calc(100 - round(l, 100)) 0 0);
 
   .picker-icon:has(> &)::after {
-    background-color: lch(from --value(--color-*, [*]) calc(100 - round(l, 100))
-      0 0);
+    background-color: lch(from var(--team-color, var(--color-sky-100))
+      calc(100 - round(l, 100)) 0 0);
   }
 }
 
-@utility picker-icon {
+@supports (color: contrast-color(red)) {
+  .team {
+    color: contrast-color(var(--team-color));
+
+    .picker-icon:has(> &)::after {
+      background-color: contrast-color(var(--team-color, var(--color-sky-100)));
+    }
+  }
+}
+
+.picker-icon {
   position: relative;
   display: inline-block;
 
@@ -40,16 +51,16 @@
     mask-repeat: no-repeat;
     background-color: #333;
   }
+}
 
-  @supports selector(:open) {
-    @media not (prefers-reduced-motion: reduce) {
-      &::after {
-        transition: transform 0.2s ease-in-out;
-      }
+@supports selector(:open) {
+  @media not (prefers-reduced-motion: reduce) {
+    .picker-icon::after {
+      transition: transform 0.2s ease-in-out;
+    }
 
-      &:has(> :open)::after {
-        transform: rotate(180deg);
-      }
+    .picker-icon:has(> :open)::after {
+      transform: rotate(180deg);
     }
   }
 }

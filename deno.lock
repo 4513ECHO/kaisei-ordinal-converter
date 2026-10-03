@@ -42,12 +42,14 @@
     "npm:esbuild-wasm@~0.25.11": "0.25.12",
     "npm:esbuild@0.25.7": "0.25.7",
     "npm:esbuild@~0.25.5": "0.25.12",
+    "npm:lucide-react@^1.49.0": "1.49.0_react@19.3.0",
     "npm:preact-render-to-string@^6.6.3": "6.7.0_preact@10.29.8",
     "npm:preact@^10.28.2": "10.29.8_preact-render-to-string@6.7.0",
     "npm:preact@^10.29.1": "10.29.8_preact-render-to-string@6.7.0",
     "npm:preact@^10.29.8": "10.29.8_preact-render-to-string@6.7.0",
     "npm:rollup@^4.55.1": "4.63.2",
     "npm:tailwindcss@^4.3.3": "4.3.3",
+    "npm:vite-plugin-lucide-preprocess@^1.8.0": "1.8.0_rollup@4.63.2_vite@7.3.6",
     "npm:vite@^6.4.3": "6.4.3",
     "npm:vite@^7.1.4": "7.3.6"
   },
@@ -1349,6 +1351,12 @@
         "yallist"
       ]
     },
+    "lucide-react@1.49.0_react@19.3.0": {
+      "integrity": "sha512-ApfaNM4/7jBrVopqLJ84Jz8TMQ1Q1JeZ1PmKh25aeS3E1FTVcMkSh1bEQB7dfzdIrwXRP8p3z4AJjTIHHb5IIA==",
+      "dependencies": [
+        "react"
+      ]
+    },
     "magic-string@0.30.21": {
       "integrity": "sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ==",
       "dependencies": [
@@ -1396,6 +1404,9 @@
       "optionalPeers": [
         "preact-render-to-string"
       ]
+    },
+    "react@19.3.0": {
+      "integrity": "sha512-E8LUcbtBWt20bbl2YoHfx4ZDBdxVTfOKtCZn9cDSJ4l6/nuoApcpIBcj47t2wZoVX8g2ZHuMHbiShgCR1T5Sog=="
     },
     "rollup@4.63.2": {
       "integrity": "sha512-l5eyksV4tPBj6lJyEa37YzIOCSOV7lkZzEHUdpjWZbtD7wTcFYmEYXSgm5bT4vV+dZLb9rBG1W9GROOG4NS4Ew==",
@@ -1462,6 +1473,17 @@
       ],
       "bin": true
     },
+    "vite-plugin-lucide-preprocess@1.8.0_rollup@4.63.2_vite@7.3.6": {
+      "integrity": "sha512-T7flrMWZ/iOEJcb0HSAfeYHWEBr668MrZ3dK+cUj3/7vXXUkead0vwBi7xmHy68YvbvIzDtXBqMy3aomlWLuTA==",
+      "dependencies": [
+        "magic-string",
+        "rollup",
+        "vite@7.3.6"
+      ],
+      "optionalPeers": [
+        "rollup"
+      ]
+    },
     "vite@6.4.3": {
       "integrity": "sha512-NTKlcQjlAK7MlQoyb6LgaqHc8sso/pVyUJYWMws3jg21uTJw/LddqIFPcPqP6PzpgbIcZyKI85sFE4HBrQDA8A==",
       "dependencies": [
@@ -1504,8 +1526,10 @@
       "npm:@tailwindcss/vite@^4.3.3",
       "npm:@types/babel__core@^7.20.5",
       "npm:clsx@^2.1.1",
+      "npm:lucide-react@^1.49.0",
       "npm:preact@^10.29.8",
       "npm:tailwindcss@^4.3.3",
+      "npm:vite-plugin-lucide-preprocess@^1.8.0",
       "npm:vite@^6.4.3"
     ]
   }

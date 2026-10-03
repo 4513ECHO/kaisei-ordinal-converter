@@ -1,9 +1,15 @@
 import type { Color } from "./state.ts";
 
-const suffixes = ["th", "st", "nd", "rd"] as const;
+const plualRules = new Intl.PluralRules("en", { type: "ordinal" });
+const suffixes: Partial<Record<Intl.LDMLPluralRule, string>> = {
+  one: "st",
+  two: "nd",
+  few: "rd",
+  other: "th",
+};
+
 export function getOrdinalSuffix(ordinal: number): string {
-  const mod100 = ordinal % 100;
-  return suffixes[(mod100 - 20) % 10] ?? suffixes[mod100] ?? suffixes[0];
+  return suffixes[plualRules.select(ordinal)] ?? "";
 }
 
 export function withOrdinalSuffix(ordinal: number): string {

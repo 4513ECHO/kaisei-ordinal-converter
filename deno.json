@@ -53,9 +53,11 @@
     "@types/babel__core": "npm:@types/babel__core@^7.20.5",
     "clsx": "npm:clsx@^2.1.1",
     "fresh": "jsr:@fresh/core@^2.3.3",
+    "lucide-react": "npm:lucide-react@^1.49.0",
     "preact": "npm:preact@^10.29.8",
     "tailwindcss": "npm:tailwindcss@^4.3.3",
-    "vite": "npm:vite@^6.4.3"
+    "vite": "npm:vite@^6.4.3",
+    "vite-plugin-lucide-preprocess": "npm:vite-plugin-lucide-preprocess@^1.8.0"
   },
   "nodeModulesDir": "manual",
   "tasks": {

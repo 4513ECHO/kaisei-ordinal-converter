@@ -1,11 +1,7 @@
 import type { ComponentProps } from "preact";
 import { clsx } from "clsx";
 
-export default function Input(
-  props:
-    & Omit<ComponentProps<"input">, "className">
-    & { className?: string },
-) {
+export default function Input(props: ComponentProps<"input">) {
   return (
     <input
       {...props}

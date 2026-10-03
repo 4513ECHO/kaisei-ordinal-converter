@@ -26,14 +26,14 @@ export default function TeamSelector() {
       />
       代
       <Select
-        style={{ "--bg-color": state.team.color }}
-        variant="team"
         onChange={handleChange("setTeamColor")}
+        class="pl-4 team"
+        style={{ "--team-color": state.team.color.value }}
         value={state.team.color}
         name="team_color"
         required
       >
-        <option value="" hidden></option>
+        <option hidden disabled selected></option>
         <option value="purple">紫</option>
         <option value="white">白</option>
         <option value="blue">青</option>
