@@ -49,7 +49,7 @@ export default function TeamSelector() {
 }
 
 export function showTeamResult(state: State): string {
-  if (state.team.ordinal === "" || state.team.color === "") {
+  if (state.team.ordinal === undefined || state.team.color === undefined) {
     throw new Error("Invalid ordinal");
   }
   const className = formatTeam(state.team.color, state.team.ordinal);

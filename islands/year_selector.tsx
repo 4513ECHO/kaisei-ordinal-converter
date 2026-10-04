@@ -16,7 +16,7 @@ export default function YearSelector() {
         class="max-w-24"
         type="number"
         min={1872}
-        placeholder="2025"
+        placeholder={new Date().getFullYear().toString()}
         onChange={handleChange("setYear")}
         value={state.year}
         name="year"
@@ -29,7 +29,7 @@ export default function YearSelector() {
 
 export function showYearResult(state: State) {
   const { year } = state;
-  if (year === "") {
+  if (year === undefined) {
     throw new Error("Year is not set");
   }
   switch (state.kind.to) {

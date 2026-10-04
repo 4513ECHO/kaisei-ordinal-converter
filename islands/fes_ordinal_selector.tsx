@@ -31,7 +31,7 @@ export default function FesOrdinalSelector() {
 
 export function showFesOrdinalResult(state: State) {
   const { fesOrdinal } = state;
-  if (fesOrdinal === "") {
+  if (fesOrdinal === undefined) {
     throw new Error("Fes ordinal is not set");
   }
   switch (state.kind.to) {

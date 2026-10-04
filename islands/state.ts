@@ -17,14 +17,14 @@ export type Kind = "team" | "year" | "fes_ordinal";
 export type State = {
   kind: {
     from: Kind;
-    to: Kind | "";
+    to?: Kind;
   };
   team: {
-    ordinal: number | "";
-    color: Color | "";
+    ordinal?: number;
+    color?: Color;
   };
-  year: number | "";
-  fesOrdinal: number | "";
+  year?: number;
+  fesOrdinal?: number;
 };
 
 export type Action = {
@@ -43,14 +43,8 @@ export type Action = {
 export const initialState: State = {
   kind: {
     from: "team",
-    to: "",
   },
-  team: {
-    ordinal: "",
-    color: "",
-  },
-  year: "",
-  fesOrdinal: "",
+  team: {},
 };
 
 function isKind(x: string): x is Kind {
@@ -71,6 +65,9 @@ function isColor(x: string): x is Color {
 }
 
 function asInteger(x: string): number | null {
+  if (x.trim() === "") {
+    return null;
+  }
   const payload = Number(x);
   if (Number.isSafeInteger(payload)) {
     return payload;
@@ -87,7 +84,7 @@ export function reducer(state: State, action: Action): State {
       return { ...state, kind: { ...state.kind, from: action.payload } };
     }
     case "setKindTo": {
-      if (!isKind(action.payload) && action.payload !== "") {
+      if (!isKind(action.payload)) {
         return state;
       }
       return { ...state, kind: { ...state.kind, to: action.payload } };
@@ -121,7 +118,7 @@ export function reducer(state: State, action: Action): State {
     }
     case "swapKind": {
       const { from, to } = state.kind;
-      if (to === "") {
+      if (!to) {
         return state;
       }
       return { ...state, kind: { from: to, to: from } };

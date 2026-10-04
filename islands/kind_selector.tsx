@@ -3,6 +3,18 @@ import { ArrowRightLeft, ArrowUpDown } from "lucide-react";
 import Select from "../components/Select.tsx";
 import { Context } from "./state.ts";
 
+function Options({ selected }: { selected?: string }) {
+  return (
+    <>
+      <option value="year" disabled={selected === "year"}>年度</option>
+      <option value="fes_ordinal" disabled={selected === "fes_ordinal"}>
+        回数
+      </option>
+      <option value="team" disabled={selected === "team"}>組</option>
+    </>
+  );
+}
+
 export default function KindSelector() {
   const [state, dispatch, handleChange] = useContext(Context);
   return (
@@ -15,9 +27,7 @@ export default function KindSelector() {
           onChange={handleChange("setKindFrom")}
           required
         >
-          <option value="year">年度</option>
-          <option value="fes_ordinal">回数</option>
-          <option value="team">組</option>
+          <Options selected={state.kind.to} />
         </Select>
         <span>から</span>
       </label>
@@ -25,7 +35,7 @@ export default function KindSelector() {
         type="button"
         class="block p-2 rounded-md sm:inline-block sm:mx-2 disabled:opacity-30 size-10 not-sm:m-2 not-disabled:hover:bg-sky-100"
         onClick={() => dispatch({ type: "swapKind" })}
-        disabled={state.kind.to === ""}
+        disabled={!state.kind.to}
         aria-label="変換対象を入れ替え"
       >
         <ArrowRightLeft className="not-sm:hidden" />
@@ -39,18 +49,7 @@ export default function KindSelector() {
           onChange={handleChange("setKindTo")}
           required
         >
-          <option value="year" disabled={state.kind.from === "year"}>
-            年度
-          </option>
-          <option
-            value="fes_ordinal"
-            disabled={state.kind.from === "fes_ordinal"}
-          >
-            回数
-          </option>
-          <option value="team" disabled={state.kind.from === "team"}>
-            組
-          </option>
+          <Options selected={state.kind.from} />
           <option hidden disabled selected></option>
         </Select>
         <span>に</span>
