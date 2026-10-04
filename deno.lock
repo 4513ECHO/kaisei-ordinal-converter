@@ -42,7 +42,7 @@
     "npm:esbuild-wasm@~0.25.11": "0.25.12",
     "npm:esbuild@0.25.7": "0.25.7",
     "npm:esbuild@~0.25.5": "0.25.12",
-    "npm:lucide-react@^1.49.0": "1.49.0_react@19.3.0",
+    "npm:lucide-react@^1.51.0": "1.51.0_react@19.3.0",
     "npm:preact-render-to-string@^6.6.3": "6.7.0_preact@10.29.8",
     "npm:preact@^10.28.2": "10.29.8_preact-render-to-string@6.7.0",
     "npm:preact@^10.29.1": "10.29.8_preact-render-to-string@6.7.0",
@@ -1351,8 +1351,8 @@
         "yallist"
       ]
     },
-    "lucide-react@1.49.0_react@19.3.0": {
-      "integrity": "sha512-ApfaNM4/7jBrVopqLJ84Jz8TMQ1Q1JeZ1PmKh25aeS3E1FTVcMkSh1bEQB7dfzdIrwXRP8p3z4AJjTIHHb5IIA==",
+    "lucide-react@1.51.0_react@19.3.0": {
+      "integrity": "sha512-9929jimol5y7VbXUlVKcgURMSeIxFJB7dtWCkRAaNnF7KiCRkSkhmqWPUmAmUFYPezNawFk6qvz3Mu0gEnfI4g==",
       "dependencies": [
         "react"
       ]
@@ -1526,7 +1526,7 @@
       "npm:@tailwindcss/vite@^4.3.3",
       "npm:@types/babel__core@^7.20.5",
       "npm:clsx@^2.1.1",
-      "npm:lucide-react@^1.49.0",
+      "npm:lucide-react@^1.51.0",
       "npm:preact@^10.29.8",
       "npm:tailwindcss@^4.3.3",
       "npm:vite-plugin-lucide-preprocess@^1.8.0",

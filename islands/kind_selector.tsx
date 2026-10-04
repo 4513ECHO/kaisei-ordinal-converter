@@ -6,9 +6,9 @@ import { Context } from "./state.ts";
 export default function KindSelector() {
   const [state, dispatch, handleChange] = useContext(Context);
   return (
-    <div className="sm:flex sm:items-center">
+    <div class="sm:flex sm:items-center">
       <label>
-        <span className="sr-only">変換元</span>
+        <span class="sr-only">変換元</span>
         <Select
           name="kind_from"
           value={state.kind.from}
@@ -23,7 +23,7 @@ export default function KindSelector() {
       </label>
       <button
         type="button"
-        className="block p-2 rounded-md sm:inline-block sm:mx-2 disabled:opacity-30 size-10 not-sm:m-2 not-disabled:hover:bg-sky-100"
+        class="block p-2 rounded-md sm:inline-block sm:mx-2 disabled:opacity-30 size-10 not-sm:m-2 not-disabled:hover:bg-sky-100"
         onClick={() => dispatch({ type: "swapKind" })}
         disabled={state.kind.to === ""}
         aria-label="変換対象を入れ替え"
@@ -32,7 +32,7 @@ export default function KindSelector() {
         <ArrowUpDown className="sm:hidden" />
       </button>
       <label>
-        <span className="sr-only">変換先</span>
+        <span class="sr-only">変換先</span>
         <Select
           name="kind_to"
           value={state.kind.to}

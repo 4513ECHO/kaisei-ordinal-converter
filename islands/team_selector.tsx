@@ -12,10 +12,10 @@ import {
 export default function TeamSelector() {
   const [state, _, handleChange] = useContext(Context);
   return (
-    <div className="p-4">
+    <div class="p-4">
       第
       <Input
-        className="max-w-16"
+        class="max-w-16"
         type="number"
         min={1}
         placeholder="80"

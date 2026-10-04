@@ -12,9 +12,9 @@ import {
 export default function FesOrdinalSelector() {
   const [state, _, handleChange] = useContext(Context);
   return (
-    <p className="p-4">
+    <p class="p-4">
       <Input
-        className="max-w-24"
+        class="max-w-24"
         type="number"
         min={1}
         placeholder="154th"
@@ -43,7 +43,7 @@ export function showFesOrdinalResult(state: State) {
       return (
         <div>
           {withOrdinalSuffix(fesOrdinal)}運動会の組は
-          <ul className="list-disc list-inside">
+          <ul class="list-disc list-inside">
             {colors.map((color) => (
               <li key={color}>
                 {formatTeam(

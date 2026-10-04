@@ -11,9 +11,9 @@ import {
 export default function YearSelector() {
   const [state, _, handleChange] = useContext(Context);
   return (
-    <p className="p-4">
+    <p class="p-4">
       <Input
-        className="max-w-24"
+        class="max-w-24"
         type="number"
         min={1872}
         placeholder="2025"
@@ -41,7 +41,7 @@ export function showYearResult(state: State) {
       return (
         <div>
           {state.year}年度の組は
-          <ul className="list-disc list-inside">
+          <ul class="list-disc list-inside">
             {colors.map((color) => (
               <li key={color}>
                 {formatTeam(color, year - getTeamFirstYear(color) + 1)}

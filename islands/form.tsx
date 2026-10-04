@@ -31,7 +31,7 @@ export default function Form() {
     }
   }
   return (
-    <form onSubmit={handleSubmit} className="p-6">
+    <form onSubmit={handleSubmit} class="p-6">
       <Context value={[state, dispatch, handleChange]}>
         <KindSelector />
         {state.kind.from === "year"
@@ -44,12 +44,12 @@ export default function Form() {
       </Context>
 
       <button
-        className="py-2 px-4 text-white rounded-md bg-sky-500 hover:bg-sky-400"
+        class="py-2 px-4 text-white rounded-md bg-sky-500 hover:bg-sky-400"
         type="submit"
       >
         変換
       </button>
-      <output className="block pt-4">{result}</output>
+      <output class="block pt-4">{result}</output>
     </form>
   );
 }

@@ -3,10 +3,10 @@ import { clsx } from "clsx";
 
 export default function Select(props: ComponentProps<"select">) {
   return (
-    <div className="picker-icon" style={props.style}>
+    <div class="picker-icon" style={props.style}>
       <select
         {...props}
-        className={clsx(
+        class={clsx(
           "rounded-md text-md p-2 pr-5 mx-2 bg-sky-100",
           props.class,
         )}
