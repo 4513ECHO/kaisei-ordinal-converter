@@ -1,6 +1,5 @@
-import { useContext } from "preact/hooks";
-import Input from "../components/Input.tsx";
-import { colors, Context, type State } from "./state.ts";
+import Input from "@/components/Input.tsx";
+import { colors, setAsInteger, type State, state } from "./state.ts";
 import {
   fesFirstYear,
   formatTeam,
@@ -10,7 +9,6 @@ import {
 } from "./utils.ts";
 
 export default function FesOrdinalSelector() {
-  const [state, _, handleChange] = useContext(Context);
   return (
     <p class="p-4">
       <Input
@@ -20,7 +18,7 @@ export default function FesOrdinalSelector() {
         placeholder="154th"
         name="fes_ordinal"
         value={state.fesOrdinal}
-        onChange={handleChange("setFesOrdinal")}
+        onChange={(e) => setAsInteger("fesOrdinal", e.currentTarget.value)}
         required
       />
       {state.fesOrdinal && getOrdinalSuffix(state.fesOrdinal)}
@@ -45,7 +43,7 @@ export function showFesOrdinalResult(state: State) {
           {withOrdinalSuffix(fesOrdinal)}運動会の組は
           <ul class="list-disc list-inside">
             {colors.map((color) => (
-              <li key={color}>
+              <li>
                 {formatTeam(
                   color,
                   fesFirstYear + fesOrdinal - getTeamFirstYear(color),

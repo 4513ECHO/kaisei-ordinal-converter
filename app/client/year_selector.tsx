@@ -1,6 +1,5 @@
-import { useContext } from "preact/hooks";
-import Input from "../components/Input.tsx";
-import { colors, Context, type State } from "./state.ts";
+import Input from "@/components/Input.tsx";
+import { colors, setAsInteger, type State, state } from "./state.ts";
 import {
   fesFirstYear,
   formatTeam,
@@ -9,7 +8,6 @@ import {
 } from "./utils.ts";
 
 export default function YearSelector() {
-  const [state, _, handleChange] = useContext(Context);
   return (
     <p class="p-4">
       <Input
@@ -17,7 +15,7 @@ export default function YearSelector() {
         type="number"
         min={1872}
         placeholder={new Date().getFullYear().toString()}
-        onChange={handleChange("setYear")}
+        onChange={(e) => setAsInteger("year", e.currentTarget.value)}
         value={state.year}
         name="year"
         required
@@ -43,7 +41,7 @@ export function showYearResult(state: State) {
           {state.year}年度の組は
           <ul class="list-disc list-inside">
             {colors.map((color) => (
-              <li key={color}>
+              <li>
                 {formatTeam(color, year - getTeamFirstYear(color) + 1)}
               </li>
             ))}

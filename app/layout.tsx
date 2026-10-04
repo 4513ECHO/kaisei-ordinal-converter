@@ -1,14 +1,15 @@
-import { define } from "@/utils.ts";
+import type { ParentProps } from "solid-js";
+import { Link, Script } from "./components/manifest_helper.tsx";
 
 const title = "開成大運動会 序数変換ツール";
 const description =
   "開成大運動会の開催年度・開催回数・各組が何代目かを相互に変換するツールです。";
 
-export default define.page(({ Component }) => {
+export default function Layout(props: ParentProps) {
   return (
     <html lang="ja">
       <head>
-        <meta charSet="utf-8" />
+        <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{title}</title>
         <meta name="description" content={description} />
@@ -19,10 +20,10 @@ export default define.page(({ Component }) => {
           content="https://kaisei-ordinal-converter.4513echo.dev/"
         />
         <link rel="icon" href="/favicon.ico" />
+        <Script src="/app/client.tsx" />
+        <Link rel="stylesheet" href="/app/styles.css" />
       </head>
-      <body>
-        <Component />
-      </body>
+      <body>{props.children}</body>
     </html>
   );
-});
+}

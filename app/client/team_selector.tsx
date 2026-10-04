@@ -1,7 +1,6 @@
-import { useContext } from "preact/hooks";
-import Input from "../components/Input.tsx";
-import Select from "../components/Select.tsx";
-import { Context, type State } from "./state.ts";
+import Input from "@/components/Input.tsx";
+import Select from "@/components/Select.tsx";
+import { setAsInteger, setColor, type State, state } from "./state.ts";
 import {
   fesFirstYear,
   formatTeam,
@@ -10,7 +9,6 @@ import {
 } from "./utils.ts";
 
 export default function TeamSelector() {
-  const [state, _, handleChange] = useContext(Context);
   return (
     <div class="p-4">
       第
@@ -20,13 +18,13 @@ export default function TeamSelector() {
         min={1}
         placeholder="80"
         name="team_ordinal"
-        onChange={handleChange("setTeamOrdinal")}
+        onChange={(e) => setAsInteger("team", e.currentTarget.value)}
         value={state.team.ordinal}
         required
       />
       代
       <Select
-        onChange={handleChange("setTeamColor")}
+        onChange={(e) => setColor(e.currentTarget.value)}
         class="pl-4 team"
         style={{ "--team-color": state.team.color }}
         value={state.team.color}

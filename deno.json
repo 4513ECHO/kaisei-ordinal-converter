@@ -5,66 +5,47 @@
       "deno.ns"
     ],
     "jsx": "precompile",
-    "jsxImportSource": "preact",
-    "jsxPrecompileSkipElements": [
-      "a",
-      "img",
-      "source",
-      "body",
-      "html",
-      "head",
-      "title",
-      "meta",
-      "script",
-      "link",
-      "style",
-      "base",
-      "noscript",
-      "template"
-    ],
+    "jsxImportSource": "solid-js",
     "types": [
       "vite/client"
     ],
     "noUncheckedIndexedAccess": true
   },
   "exclude": [
-    "**/_fresh/*"
+    "**/*.gen.*",
+    "dist"
   ],
   "lint": {
     "rules": {
       "tags": [
-        "fresh",
+        "jsx",
         "recommended"
       ],
       "include": [
         "eqeqeq",
         "no-await-in-loop"
-      ],
-      "exclude": [
-        "fresh-handler-export"
       ]
     }
   },
   "imports": {
-    "@/": "./",
-    "@fresh/plugin-vite": "jsr:@fresh/plugin-vite@^1.1.2",
-    "@preact/signals": "npm:@preact/signals@^2.11.3",
+    "@/": "./app/",
+    "@hono/vite-build": "npm:@hono/vite-build@^1.11.1",
+    "@hono/vite-dev-server": "npm:@hono/vite-dev-server@^0.26.1",
     "@tailwindcss/vite": "npm:@tailwindcss/vite@^4.3.3",
-    "@types/babel__core": "npm:@types/babel__core@^7.20.5",
     "clsx": "npm:clsx@^2.1.1",
-    "fresh": "jsr:@fresh/core@^2.3.3",
-    "lucide-react": "npm:lucide-react@^1.51.0",
-    "preact": "npm:preact@^10.29.8",
+    "hono": "npm:hono@^4.13.12",
+    "lucide-solid": "npm:lucide-solid@^1.51.0",
+    "solid-js": "npm:solid-js@^1.9.15",
     "tailwindcss": "npm:tailwindcss@^4.3.3",
-    "vite": "npm:vite@^6.4.3",
-    "vite-plugin-lucide-preprocess": "npm:vite-plugin-lucide-preprocess@^1.8.0"
+    "vite": "npm:vite@^8.3.2",
+    "vite-plugin-lucide-preprocess": "npm:vite-plugin-lucide-preprocess@^1.8.0",
+    "vite-plugin-solid": "npm:vite-plugin-solid@^2.11.14"
   },
-  "nodeModulesDir": "manual",
+  "nodeModulesDir": "auto",
   "tasks": {
-    "check": "deno fmt --check && deno lint && deno check .",
+    "check": "deno fmt --check && deno lint && deno check",
     "dev": "vite",
-    "build": "vite build",
-    "start": "deno serve -A _fresh/server.js",
-    "update": "deno run -A -r jsr:@fresh/update ."
+    "build": "vite build --mode client && vite build",
+    "start": "deno serve -ER=. dist/index.js"
   }
 }

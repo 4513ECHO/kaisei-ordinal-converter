@@ -1,11 +1,10 @@
-import { define } from "@/utils.ts";
-import Form from "../islands/form.tsx";
-
-export default define.page(function Home(_ctx) {
+export default function App() {
   return (
     <div class="p-6 mx-auto max-w-3xl">
       <h1 class="py-2 text-2xl font-bold">開成大運動会 序数変換ツール</h1>
-      <Form />
+
+      <div id="form"></div>
+
       <h2 class="py-2 text-xl font-bold">これは何</h2>
       <p>
         開成大運動会の開催年度・開催回数・各組が何代目かを相互に変換するツールです。
@@ -32,4 +31,4 @@ export default define.page(function Home(_ctx) {
       </p>
     </div>
   );
-});
+}

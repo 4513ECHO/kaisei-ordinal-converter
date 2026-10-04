@@ -2,8 +2,8 @@
 .env
 .env.*
 
-# Fresh build directory
-_fresh/
+# build directory
+dist/
 # npm + other dependencies
 node_modules/
 vendor/
