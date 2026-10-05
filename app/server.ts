@@ -6,7 +6,9 @@ import App from "./app.tsx";
 const app = new Hono();
 
 app.get("/", (c) => {
-  return c.html(renderToString(() => Layout({ children: App() })));
+  return c.html(
+    "<!DOCTYPE html>" + renderToString(() => Layout({ children: App() })),
+  );
 });
 
 export default app;
