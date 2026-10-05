@@ -35,3 +35,14 @@ export function formatTeam(color: Color, ordinal: number): string {
 export function getTeamFirstYear(color: Color): number {
   return teamData[color][1];
 }
+
+export function asInteger(x: string): number | null {
+  if (x.trim() === "") {
+    return null;
+  }
+  const payload = Number(x);
+  if (Number.isSafeInteger(payload)) {
+    return payload;
+  }
+  return null;
+}

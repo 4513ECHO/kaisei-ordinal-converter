@@ -1,6 +1,8 @@
 import { createStore, produce } from "solid-js/store";
+import type { JSX } from "solid-js";
+import { asInteger } from "./utils.ts";
 
-export const colors = [
+export const COLORS = [
   "purple",
   "white",
   "blue",
@@ -10,7 +12,7 @@ export const colors = [
   "red",
   "black",
 ] as const;
-export type Color = typeof colors[number];
+export type Color = typeof COLORS[number];
 export type Kind = "team" | "year" | "fes_ordinal";
 
 export type State = {
@@ -26,6 +28,14 @@ export type State = {
   fesOrdinal?: number;
 };
 
+type FilledState<From extends Kind = never, To extends Kind = Kind> =
+  & State
+  & { kind: { from: From; to: To } }
+  & (From extends "team" ? { team: { ordinal: number; color: Color } }
+    : From extends "year" ? { year: number }
+    : From extends "fes_ordinal" ? { fesOrdinal: number }
+    : never);
+
 export const initialState: State = {
   kind: {
     from: "team",
@@ -38,18 +48,7 @@ function isKind(x: unknown): x is Kind {
 }
 
 function isColor(x: unknown): x is Color {
-  return typeof x === "string" && (colors as readonly string[]).includes(x);
-}
-
-function asInteger(x: string): number | null {
-  if (x.trim() === "") {
-    return null;
-  }
-  const payload = Number(x);
-  if (Number.isSafeInteger(payload)) {
-    return payload;
-  }
-  return null;
+  return typeof x === "string" && (COLORS as readonly string[]).includes(x);
 }
 
 const [state, setState] = createStore<State>(initialState);
@@ -94,4 +93,16 @@ export function swapKind() {
       kind.to = from;
     }),
   );
+}
+
+export type Converter<From extends Kind> = {
+  [To in Exclude<Kind, From>]: (state: FilledState<From, To>) => JSX.Element;
+};
+
+export function convert<From extends Kind, To extends Exclude<Kind, From>>(
+  state: State,
+  converters: { [F in Kind]: Converter<F> },
+): JSX.Element {
+  const { from, to } = (state as FilledState<From, To>).kind;
+  return (converters[from][to] as (state: State) => JSX.Element)(state);
 }

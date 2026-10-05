@@ -1,6 +1,12 @@
 import Input from "@/components/Input.tsx";
 import Select from "@/components/Select.tsx";
-import { setAsInteger, setColor, type State, state } from "./state.ts";
+import {
+  COLORS,
+  type Converter,
+  setAsInteger,
+  setColor,
+  state,
+} from "./state.ts";
 import {
   fesFirstYear,
   formatTeam,
@@ -46,24 +52,26 @@ export default function TeamSelector() {
   );
 }
 
-export function showTeamResult(state: State): string {
-  if (state.team.ordinal === undefined || state.team.color === undefined) {
-    throw new Error("Invalid ordinal");
-  }
-  const className = formatTeam(state.team.color, state.team.ordinal);
-  switch (state.kind.to) {
-    case "fes_ordinal":
-      return `${className}は${
-        withOrdinalSuffix(
-          getTeamFirstYear(state.team.color) - fesFirstYear +
-            state.team.ordinal,
-        )
-      }運動会の組です。`;
-    case "year":
-      return `${className}は${
-        state.team.ordinal + getTeamFirstYear(state.team.color) - 1
-      }年度の組です。`;
-    default:
-      throw new Error(`Invalid kind: ${state.kind.to}`);
-  }
-}
+export const teamConverter: Converter<"team"> = {
+  fes_ordinal({ team }) {
+    const className = formatTeam(team.color, team.ordinal);
+    return (
+      <>
+        {className}は
+        {withOrdinalSuffix(
+          getTeamFirstYear(team.color) - fesFirstYear + team.ordinal,
+        )}
+        運動会の組です。
+      </>
+    );
+  },
+  year({ team }) {
+    const className = formatTeam(team.color, team.ordinal);
+    return (
+      <>
+        {className}は
+        {team.ordinal + getTeamFirstYear(team.color) - 1}年度の組です。
+      </>
+    );
+  },
+};
