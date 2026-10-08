@@ -1,5 +1,4 @@
-import { createSignal, Match, Switch } from "solid-js";
-import type { JSX } from "@solidjs/web";
+import { createSignal, type JSX, Match, Switch } from "solid-js";
 import { state } from "./state.ts";
 import YearSelector from "./year_selector.tsx";
 import TeamSelector from "./team_selector.tsx";

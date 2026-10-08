@@ -3,27 +3,17 @@
   "specifiers": {
     "npm:@hono/vite-build@^1.11.1": "1.11.1_hono@4.13.12",
     "npm:@hono/vite-dev-server@~0.26.1": "0.26.1_hono@4.13.12",
-    "npm:@lucide/solid@^1.52.0": "1.52.0_solid-js@2.0.0-rc.13",
-    "npm:@solidjs/vite-plugin@3.0.0-next.47": "3.0.0-next.47_@solidjs+web@2.0.0-rc.13_solid-js@2.0.0-rc.13_vite@8.3.2",
-    "npm:@solidjs/web@*": "2.0.0-rc.0_solid-js@2.0.0-rc.13",
-    "npm:@solidjs/web@2.0.0-rc.13": "2.0.0-rc.13_solid-js@2.0.0-rc.13",
-    "npm:@solidjs/web@next": "2.0.0-rc.13_solid-js@2.0.0-rc.13",
     "npm:@tailwindcss/vite@^4.3.3": "4.3.3_vite@8.3.2",
+    "npm:clsx@^2.1.1": "2.1.1",
     "npm:hono@^4.13.12": "4.13.12",
-    "npm:solid-js@^2.0.0-rc.13": "2.0.0-rc.13",
-    "npm:solid-js@next": "2.0.0-rc.13",
+    "npm:lucide-solid@^1.51.0": "1.51.0_solid-js@1.9.15",
+    "npm:solid-js@^1.9.15": "1.9.15",
     "npm:tailwindcss@^4.3.3": "4.3.3",
     "npm:vite-plugin-lucide-preprocess@^1.8.0": "1.8.0_vite@8.3.2",
+    "npm:vite-plugin-solid@^2.11.14": "2.11.14_solid-js@1.9.15_vite@8.3.2",
     "npm:vite@^8.3.2": "8.3.2"
   },
   "npm": {
-    "@ampproject/remapping@2.3.0": {
-      "integrity": "sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==",
-      "dependencies": [
-        "@jridgewell/gen-mapping",
-        "@jridgewell/trace-mapping"
-      ]
-    },
     "@babel/code-frame@7.29.7": {
       "integrity": "sha512-Aup7aUOfpbAUg2ROOJN6Iw5f9DMBlzu0mIkm/malLQFN/YQgO48wCj0Kxa3sEHJvPVFg7siR+qRInwXd2qhQKw==",
       "dependencies": [
@@ -160,25 +150,6 @@
         "@babel/helper-validator-identifier"
       ]
     },
-    "@emnapi/core@1.11.3": {
-      "integrity": "sha512-zLpS5asjEb7lq8jYLq37N6XKaE41DIexlY1rF/z4/tIl3wo13Sqm28fRyfIsKZD+NZ8mM5RoKkpW/rBcuoSZSg==",
-      "dependencies": [
-        "@emnapi/wasi-threads",
-        "tslib"
-      ]
-    },
-    "@emnapi/runtime@1.11.3": {
-      "integrity": "sha512-Xz4Tpyki7XyrpbUK1jR1AhdAdaXyhhY4lZ3neLodmhpuWfy2PAQN5B46sAiU4liOXGLkHypn/qU+jvfWSCYYLA==",
-      "dependencies": [
-        "tslib"
-      ]
-    },
-    "@emnapi/wasi-threads@1.2.3": {
-      "integrity": "sha512-ELEBe8PsLvvJ6QMr0zLt8ffvOHW/dc1m3CEzNMg7aJUv3bMaoDtw2TXyDAwkYBuroxxuHEwhRTLJSe5sya547g==",
-      "dependencies": [
-        "tslib"
-      ]
-    },
     "@hono/node-server@1.19.17_hono@4.13.12": {
       "integrity": "sha512-dSneS5qhiauZWGDCeK4o695Xd9nUNjviSZCMQrj10eetr8Uln1ucn6bbphOM6UynAMMtNIzZNSpL9vnASJwrPQ==",
       "dependencies": [
@@ -224,20 +195,6 @@
       "dependencies": [
         "@jridgewell/resolve-uri",
         "@jridgewell/sourcemap-codec"
-      ]
-    },
-    "@lucide/solid@1.52.0_solid-js@2.0.0-rc.13": {
-      "integrity": "sha512-oIz3y+EsKn0cXF1EfuFZyfgeS6q2neD/eF7bHxaSrEw7Rk8BrOsb7dOZqqAF34wjxib+xT/+y7OurhTYVGOTIw==",
-      "dependencies": [
-        "solid-js"
-      ]
-    },
-    "@napi-rs/wasm-runtime@1.2.4_@emnapi+core@1.11.3_@emnapi+runtime@1.11.3": {
-      "integrity": "sha512-AJxoUD2/15ESHbvpcyjU274nsAPLuOtPHCk0vKJM5pj//Fg/B1FXNWjPnXTT9PymCYYiHo4zPj0ZomXBKhoy7g==",
-      "dependencies": [
-        "@emnapi/core",
-        "@emnapi/runtime",
-        "@tybys/wasm-util"
       ]
     },
     "@oxc-project/types@0.152.0": {
@@ -320,95 +277,6 @@
     },
     "@rolldown/pluginutils@1.0.1": {
       "integrity": "sha512-2j9bGt5Jh8hj+vPtgzPtl72j0yRxHAyumoo6TNfAjsLB04UtpSvPbPcDcBMxz7n+9CYB0c1GxQFxYRg2jimqGw=="
-    },
-    "@solidjs/babel-plugin@2.0.0-rc.13_@babel+core@7.29.7": {
-      "integrity": "sha512-VaNysg2V5gu1leatjxBeRPvj1wTEB1LQ1bKuPABKBGztz/Vjr6bHUYEV2cC1mFuEyNJBaNrAiGv0+5Vpbl8Pug==",
-      "dependencies": [
-        "@babel/core",
-        "@babel/helper-module-imports@7.18.6",
-        "@babel/plugin-syntax-jsx",
-        "@babel/types",
-        "html-entities",
-        "parse5"
-      ]
-    },
-    "@solidjs/compiler-darwin-arm64@2.0.0-rc.13": {
-      "integrity": "sha512-uG3Sa/2jNZNxoKkcHjHw3KZEEuwDrRAk9aqUU2qqJZl9GDLLI0HVW7i/Lvq9b17f5yN+fNTdNyojO8rLgHnQuQ==",
-      "os": ["darwin"],
-      "cpu": ["arm64"]
-    },
-    "@solidjs/compiler-darwin-x64@2.0.0-rc.13": {
-      "integrity": "sha512-jIyzyn/fYHmzikOaskiqmkc8FusXMaxl1Z6huh7lEeHaZsl9NIdzzAIxq8j/EJFByvoCyfQitggRTuubGNblpA==",
-      "os": ["darwin"],
-      "cpu": ["x64"]
-    },
-    "@solidjs/compiler-linux-arm64-gnu@2.0.0-rc.13": {
-      "integrity": "sha512-cGIX7ZWTyw3Qdpd5ZqJtHdb2vQkAtZlkTgy919dMldjoRqDwQIRlqCmH35kaH/IUBlhuG224BoP4twqK9GYyGw==",
-      "os": ["linux"],
-      "cpu": ["arm64"]
-    },
-    "@solidjs/compiler-linux-x64-gnu@2.0.0-rc.13": {
-      "integrity": "sha512-Dnft4iic4zHsemNSBGMwOMjN4fP0DEoyfeSUWbqBk1CMsXRarLTcMKhjNQmJvL0opzjOUq0/m7/17LTe6AKpvg==",
-      "os": ["linux"],
-      "cpu": ["x64"]
-    },
-    "@solidjs/compiler-wasm32-wasi@2.0.0-rc.13": {
-      "integrity": "sha512-nNOMOFxanzfM2wNbSXyekMtGazyOcM3ja+P7tk0NJYTAo2MYmRTY/HUDdFRDluk6Nc5aehu87I7AVMRj5l1WXw==",
-      "dependencies": [
-        "@emnapi/core",
-        "@emnapi/runtime",
-        "@napi-rs/wasm-runtime"
-      ]
-    },
-    "@solidjs/compiler-win32-x64-msvc@2.0.0-rc.13": {
-      "integrity": "sha512-1DT+5TgIFV5L8GdrGb+uD9ruHFVq6kJ4A/cb9amUU574TGM88B4nwy//dM57zmT99u7mej7JF91glQBnHOGhHQ==",
-      "os": ["win32"],
-      "cpu": ["x64"]
-    },
-    "@solidjs/compiler@2.0.0-rc.13": {
-      "integrity": "sha512-OveR/xhLKo8MTJO/53jgjHuBW54c6/a9B/jiSjDrBeQ3JSbODUxQ8t58WBSlHaxyowPd27TwhVkLo3zeT1YqMQ==",
-      "optionalDependencies": [
-        "@solidjs/compiler-darwin-arm64",
-        "@solidjs/compiler-darwin-x64",
-        "@solidjs/compiler-linux-arm64-gnu",
-        "@solidjs/compiler-linux-x64-gnu",
-        "@solidjs/compiler-wasm32-wasi",
-        "@solidjs/compiler-win32-x64-msvc"
-      ]
-    },
-    "@solidjs/signals@2.0.0-rc.13": {
-      "integrity": "sha512-4+pRdrAHtfyE9BUJWBup3TpzJojJjgW2mV1vm/Jik4tWa5epxXB/YrLkwqP1v8+S9XjyKKZu5BSLqmcpswMYeQ=="
-    },
-    "@solidjs/vite-plugin@3.0.0-next.47_@solidjs+web@2.0.0-rc.13_solid-js@2.0.0-rc.13_vite@8.3.2": {
-      "integrity": "sha512-vcsZbXkTCt2RalJmUPp25iz+7KYGriP9w54BLf5uIJ0xDf5woTN92WdlDCh0udZV/Zb2xw2qrWQA977QeuScJw==",
-      "dependencies": [
-        "@ampproject/remapping",
-        "@babel/core",
-        "@solidjs/babel-plugin",
-        "@solidjs/compiler",
-        "@solidjs/web@2.0.0-rc.13_solid-js@2.0.0-rc.13",
-        "@types/babel__core",
-        "merge-anything",
-        "solid-js",
-        "vite",
-        "vitefu"
-      ]
-    },
-    "@solidjs/web@2.0.0-rc.0_solid-js@2.0.0-rc.13": {
-      "integrity": "sha512-pYSaA9+dH8H1h/d/ZF/P2kR6omfzFGNcdzKhWTcg9fJghXhn8+5UrXUr2iYxDdYNOXZzxxFQhYHSJ7P4HKDqgw==",
-      "dependencies": [
-        "seroval@1.5.6",
-        "seroval-plugins@1.5.6_seroval@1.5.6",
-        "solid-js"
-      ]
-    },
-    "@solidjs/web@2.0.0-rc.13_solid-js@2.0.0-rc.13": {
-      "integrity": "sha512-vI/7v/XM8B/3U/oKAzCW2VjTLFkM5IArB2DFnrjxyPRYD3FX9KAXg9QuAnPIPQHC/xvg/LgxmvoVfZUfJ96gOQ==",
-      "dependencies": [
-        "seroval@1.6.8",
-        "seroval-plugins@1.6.8_seroval@1.6.8",
-        "solid-js"
-      ]
     },
     "@tailwindcss/node@4.3.3": {
       "integrity": "sha512-/T8IKEsf9VTU6tLjgC7+sv2mOPtQxzE2jMw7u4Tt40Tx+QSZxpzh95/H6cMKoja9XuW7iMdLJYBB0o9G1CaAgg==",
@@ -507,12 +375,6 @@
         "vite"
       ]
     },
-    "@tybys/wasm-util@0.10.4": {
-      "integrity": "sha512-W3c4gRigFS0T/Ma4qIYF3GDAc5AQdHb1yL5znJT1Zv1YaD9Kitx656wBjvr19qbiosmZT8lWDM5BEMynUqX65A==",
-      "dependencies": [
-        "tslib"
-      ]
-    },
     "@types/babel__core@7.20.5": {
       "integrity": "sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==",
       "dependencies": [
@@ -542,6 +404,28 @@
         "@babel/types"
       ]
     },
+    "babel-plugin-jsx-dom-expressions@0.40.10_@babel+core@7.29.7": {
+      "integrity": "sha512-lxve6Y02YiZTldB7efKpnbf1BH00XCFZNYYW235jSGsYaJNFtHrYlKV6/O+miHbjqpIr9FTe5+0no4hofAMbfA==",
+      "dependencies": [
+        "@babel/core",
+        "@babel/helper-module-imports@7.18.6",
+        "@babel/plugin-syntax-jsx",
+        "@babel/types",
+        "html-entities",
+        "parse5"
+      ]
+    },
+    "babel-preset-solid@1.9.15_@babel+core@7.29.7_solid-js@1.9.15": {
+      "integrity": "sha512-GBmg1OiPb+OwcH51XbDAKPtvrPfQW7rCJTJxcp8+yhtWwN+kqnbEJk2SgVybd+uhTxTKAvjaFyiQSr/eUZBwzg==",
+      "dependencies": [
+        "@babel/core",
+        "babel-plugin-jsx-dom-expressions",
+        "solid-js"
+      ],
+      "optionalPeers": [
+        "solid-js"
+      ]
+    },
     "balanced-match@1.0.2": {
       "integrity": "sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw=="
     },
@@ -568,6 +452,9 @@
     },
     "caniuse-lite@1.0.30001814": {
       "integrity": "sha512-/Uaf1lAzr59XcMpW0o96WoEfr+VXK2OX4U9AgFoiSHsVJ4HppnIFUjtYzsyDH2+tgANaQb2/oxYGwCPapN1FpA=="
+    },
+    "clsx@2.1.1": {
+      "integrity": "sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA=="
     },
     "convert-source-map@2.0.0": {
       "integrity": "sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg=="
@@ -798,6 +685,12 @@
         "yallist"
       ]
     },
+    "lucide-solid@1.51.0_solid-js@1.9.15": {
+      "integrity": "sha512-b0z/9xRox77JhPkDPAmh+/SQGWeSQ4k/eG08WyUKMhmRrykH8pPIwFapPotgVGi7GR5gh0jFsZ8YKlhU6COp0A==",
+      "dependencies": [
+        "solid-js"
+      ]
+    },
     "magic-string@0.30.21": {
       "integrity": "sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ==",
       "dependencies": [
@@ -878,28 +771,27 @@
     "seroval-plugins@1.5.6_seroval@1.5.6": {
       "integrity": "sha512-HXuLAX2pu/UByPpaeo/TaMfvMIi+1QqIoPJYCcAtU8QkVNwgR6MPlGuCQTErV1JwraaMbYaWVIBX7mppzGLATQ==",
       "dependencies": [
-        "seroval@1.5.6"
-      ]
-    },
-    "seroval-plugins@1.6.8_seroval@1.6.8": {
-      "integrity": "sha512-N7mWAMydj89EnYTHtRpS3LBrAz3J9O6oVrqpuXuvlAHfAUG8WEKqtbAd7SBiJNY5NfCAFhSdyAh7wI4Shjqy4g==",
-      "dependencies": [
-        "seroval@1.6.8"
+        "seroval"
       ]
     },
     "seroval@1.5.6": {
       "integrity": "sha512-rVQVWjjSvlINzaQPZH5JFqsqEsIWdTxY3iJZCnTL/5gQbXIRooVZKI60tVCkOVfzcRPejboxO2t0P89dg5mQaA=="
     },
-    "seroval@1.6.8": {
-      "integrity": "sha512-HlSgSAkTk4EqHcje1ptJjfZi1YDv5KbhVJ/d3P7T/nAXua2VmDu+AKDX5VTdFfZf48nDkWB2TKYt0DrCSa+3wg=="
-    },
-    "solid-js@2.0.0-rc.13": {
-      "integrity": "sha512-62bYOI4JZ15KOqL5eReKyWSwAXrGb0fbX8SDnHsbJk2UX+SzSyy1gobas2cxW/0BXcobGfQ1V6ffPyQkMIBdoQ==",
+    "solid-js@1.9.15": {
+      "integrity": "sha512-EeiY2xfpZJqPLjXspVEKjAII4yv8NyG//NxZ3IpOFHdUNnnTyL0uJOeS9LWGvA7cFCz5y94cjFwYlmw5Luncsg==",
       "dependencies": [
-        "@solidjs/signals",
         "csstype",
-        "seroval@1.6.8",
-        "seroval-plugins@1.6.8_seroval@1.6.8"
+        "seroval",
+        "seroval-plugins"
+      ]
+    },
+    "solid-refresh@0.6.3_solid-js@1.9.15": {
+      "integrity": "sha512-F3aPsX6hVw9ttm5LYlth8Q15x6MlI/J3Dn+o3EQyRTtTxidepSTwAYdozt01/YA+7ObcciagGEyXIopGZzQtbA==",
+      "dependencies": [
+        "@babel/generator",
+        "@babel/helper-module-imports@7.29.7",
+        "@babel/types",
+        "solid-js"
       ]
     },
     "source-map-js@1.2.2": {
@@ -918,9 +810,6 @@
         "picomatch"
       ]
     },
-    "tslib@2.8.1": {
-      "integrity": "sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w=="
-    },
     "update-browserslist-db@1.3.3_browserslist@4.29.3": {
       "integrity": "sha512-pJ2sYawQS0R/WI928Gj5GlPhTGzbMelq0+4INtSYNDV9ErKJcX6xjGWkoG/VnB3dpUm00zALaqkrUD77pO5TDQ==",
       "dependencies": [
@@ -935,6 +824,19 @@
       "dependencies": [
         "magic-string",
         "vite"
+      ]
+    },
+    "vite-plugin-solid@2.11.14_solid-js@1.9.15_vite@8.3.2": {
+      "integrity": "sha512-7ZVBt8rpoyqmlwin2kRIUveaHoF6/kulY7gsnD+qFh4nS29V4OPAnw+ojoAspXIjObiL9o1xh9a/nTuYHm02Rw==",
+      "dependencies": [
+        "@babel/core",
+        "@types/babel__core",
+        "babel-preset-solid",
+        "merge-anything",
+        "solid-js",
+        "solid-refresh",
+        "vite",
+        "vitefu"
       ]
     },
     "vite@8.3.2": {
@@ -968,14 +870,14 @@
     "dependencies": [
       "npm:@hono/vite-build@^1.11.1",
       "npm:@hono/vite-dev-server@~0.26.1",
-      "npm:@lucide/solid@^1.52.0",
-      "npm:@solidjs/vite-plugin@3.0.0-next.47",
-      "npm:@solidjs/web@2.0.0-rc.13",
       "npm:@tailwindcss/vite@^4.3.3",
+      "npm:clsx@^2.1.1",
       "npm:hono@^4.13.12",
-      "npm:solid-js@^2.0.0-rc.13",
+      "npm:lucide-solid@^1.51.0",
+      "npm:solid-js@^1.9.15",
       "npm:tailwindcss@^4.3.3",
       "npm:vite-plugin-lucide-preprocess@^1.8.0",
+      "npm:vite-plugin-solid@^2.11.14",
       "npm:vite@^8.3.2"
     ]
   }
