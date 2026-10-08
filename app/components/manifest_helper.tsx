@@ -1,4 +1,4 @@
-import type { ComponentProps } from "solid-js";
+import type { ComponentProps } from "@solidjs/web";
 import type { Manifest } from "vite";
 
 // based on https://github.com/honojs/honox/blob/main/src/server/components/script.tsx

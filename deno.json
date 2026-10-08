@@ -5,7 +5,7 @@
       "deno.ns"
     ],
     "jsx": "precompile",
-    "jsxImportSource": "solid-js",
+    "jsxImportSource": "@solidjs/web",
     "types": [
       "vite/client"
     ],
@@ -31,15 +31,15 @@
     "@/": "./app/",
     "@hono/vite-build": "npm:@hono/vite-build@^1.11.1",
     "@hono/vite-dev-server": "npm:@hono/vite-dev-server@^0.26.1",
+    "@lucide/solid": "npm:@lucide/solid@^1.52.0",
+    "@solidjs/vite-plugin": "npm:@solidjs/vite-plugin@3.0.0-next.47",
+    "@solidjs/web": "npm:@solidjs/web@2.0.0-rc.13",
     "@tailwindcss/vite": "npm:@tailwindcss/vite@^4.3.3",
-    "clsx": "npm:clsx@^2.1.1",
     "hono": "npm:hono@^4.13.12",
-    "lucide-solid": "npm:lucide-solid@^1.51.0",
-    "solid-js": "npm:solid-js@^1.9.15",
+    "solid-js": "npm:solid-js@^2.0.0-rc.13",
     "tailwindcss": "npm:tailwindcss@^4.3.3",
     "vite": "npm:vite@^8.3.2",
-    "vite-plugin-lucide-preprocess": "npm:vite-plugin-lucide-preprocess@^1.8.0",
-    "vite-plugin-solid": "npm:vite-plugin-solid@^2.11.14"
+    "vite-plugin-lucide-preprocess": "npm:vite-plugin-lucide-preprocess@^1.8.0"
   },
   "nodeModulesDir": "auto",
   "tasks": {

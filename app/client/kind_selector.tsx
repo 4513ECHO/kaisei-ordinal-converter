@@ -1,4 +1,4 @@
-import { ArrowRightLeft, ArrowUpDown } from "lucide-solid";
+import { ArrowRightLeft, ArrowUpDown } from "@lucide/solid";
 import Select from "@/components/Select.tsx";
 import { type Kind, setKindFrom, setKindTo, state, swapKind } from "./state.ts";
 

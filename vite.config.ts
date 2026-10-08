@@ -1,24 +1,11 @@
 import { fileURLToPath } from "node:url";
-import { defineConfig, type Plugin } from "vite";
+import { defineConfig } from "vite";
 import build from "@hono/vite-build/deno";
 import devServer from "@hono/vite-dev-server";
 import adapter from "@hono/vite-dev-server/node";
-import solid from "vite-plugin-solid";
+import solid from "@solidjs/vite-plugin";
 import tailwindcss from "@tailwindcss/vite";
 import lucidePreprocess from "vite-plugin-lucide-preprocess";
-
-function client(): Plugin {
-  return {
-    name: "client",
-    apply: ({ mode }) => mode === "client",
-    config: () => ({
-      build: {
-        manifest: true,
-        rollupOptions: { input: ["./app/client.tsx", "./app/styles.css"] },
-      },
-    }),
-  };
-}
 
 export default defineConfig({
   plugins: [
@@ -27,10 +14,17 @@ export default defineConfig({
     solid({ ssr: true }),
     tailwindcss(),
     lucidePreprocess(),
-    client(),
   ],
   ssr: {
-    external: ["hono", "solid-js"],
+    external: ["hono", "@solidjs/web"],
+  },
+  environments: {
+    client: {
+      build: {
+        manifest: true,
+        rollupOptions: { input: ["./app/client.tsx", "./app/styles.css"] },
+      },
+    },
   },
   resolve: {
     alias: {

@@ -1,4 +1,4 @@
-import { createStore, produce } from "solid-js/store";
+import { createStore } from "solid-js";
 import { asInteger } from "./utils.ts";
 
 export const COLORS = [
@@ -52,36 +52,41 @@ export function setAsInteger(
 ) {
   const intValue = asInteger(value);
   if (intValue === null) return;
-  if (key === "team") {
-    setState("team", "ordinal", intValue);
-  } else {
-    setState(key, intValue);
-  }
+  setState((draft) => {
+    if (key === "team") {
+      draft.team.ordinal = intValue;
+    } else {
+      draft[key] = intValue;
+    }
+  });
 }
 
 export function setColor(color: string) {
   if (!isColor(color)) return;
-  setState("team", "color", color);
+  setState((draft) => {
+    draft.team.color = color;
+  });
 }
 
 export function setKindFrom(kind: string) {
   if (!isKind(kind)) return;
-  setState("kind", "from", kind);
+  setState((draft) => {
+    draft.kind.from = kind;
+  });
 }
 
 export function setKindTo(kind: string) {
   if (!isKind(kind)) return;
-  setState("kind", "to", kind);
+  setState((draft) => {
+    draft.kind.to = kind;
+  });
 }
 
 export function swapKind() {
-  setState(
-    "kind",
-    produce<State["kind"]>((kind) => {
-      const { from, to } = kind;
-      if (!to) return;
-      kind.from = to;
-      kind.to = from;
-    }),
-  );
+  setState((draft) => {
+    const { from, to } = draft.kind;
+    if (!to) return;
+    draft.kind.from = to;
+    draft.kind.to = from;
+  });
 }
