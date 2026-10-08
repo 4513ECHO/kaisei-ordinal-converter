@@ -4,6 +4,7 @@ import { Link, Script } from "./components/manifest_helper.tsx";
 const title = "開成大運動会 序数変換ツール";
 const description =
   "開成大運動会の開催年度・開催回数・各組が何代目かを相互に変換するツールです。";
+const link = "https://kaisei-ordinal-converter.4513echo.dev/";
 
 export default function Layout(props: ParentProps) {
   return (
@@ -15,10 +16,8 @@ export default function Layout(props: ParentProps) {
         <meta name="description" content={description} />
         <meta name="og:title" content={title} />
         <meta name="og:description" content={description} />
-        <meta
-          name="og:link"
-          content="https://kaisei-ordinal-converter.4513echo.dev/"
-        />
+        <meta name="og:link" content={link} />
+        <link rel="canonical" href={link} />
         <link rel="icon" href="/favicon.ico" />
         <Script src="/app/client.tsx" />
         <Link rel="stylesheet" href="/app/styles.css" />

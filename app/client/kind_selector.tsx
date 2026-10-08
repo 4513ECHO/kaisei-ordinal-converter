@@ -1,4 +1,4 @@
-import { ArrowRightLeft, ArrowUpDown } from "lucide-solid";
+import { ArrowRightLeft } from "lucide-solid";
 import Select from "@/components/Select.tsx";
 import { type Kind, setKindFrom, setKindTo, state, swapKind } from "./state.ts";
 
@@ -36,8 +36,7 @@ export default function KindSelector() {
         disabled={!state.kind.to}
         aria-label="変換対象を入れ替え"
       >
-        <ArrowRightLeft class="not-sm:hidden" />
-        <ArrowUpDown class="sm:hidden" />
+        <ArrowRightLeft class="not-sm:rotate-90" />
       </button>
       <label>
         <span class="sr-only">変換先</span>
