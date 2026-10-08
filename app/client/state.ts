@@ -1,5 +1,4 @@
 import { createStore, produce } from "solid-js/store";
-import type { JSX } from "solid-js";
 import { asInteger } from "./utils.ts";
 
 export const COLORS = [
@@ -27,14 +26,6 @@ export type State = {
   year?: number;
   fesOrdinal?: number;
 };
-
-type FilledState<From extends Kind = never, To extends Kind = Kind> =
-  & State
-  & { kind: { from: From; to: To } }
-  & (From extends "team" ? { team: { ordinal: number; color: Color } }
-    : From extends "year" ? { year: number }
-    : From extends "fes_ordinal" ? { fesOrdinal: number }
-    : never);
 
 export const initialState: State = {
   kind: {
@@ -93,16 +84,4 @@ export function swapKind() {
       kind.to = from;
     }),
   );
-}
-
-export type Converter<From extends Kind> = {
-  [To in Exclude<Kind, From>]: (state: FilledState<From, To>) => JSX.Element;
-};
-
-export function convert<From extends Kind, To extends Exclude<Kind, From>>(
-  state: State,
-  converters: { [F in Kind]: Converter<F> },
-): JSX.Element {
-  const { from, to } = (state as FilledState<From, To>).kind;
-  return (converters[from][to] as (state: State) => JSX.Element)(state);
 }

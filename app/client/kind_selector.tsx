@@ -1,16 +1,17 @@
 import { ArrowRightLeft, ArrowUpDown } from "lucide-solid";
 import Select from "@/components/Select.tsx";
-import { setKindFrom, setKindTo, state, swapKind } from "./state.ts";
+import { type Kind, setKindFrom, setKindTo, state, swapKind } from "./state.ts";
+
+const KIND_LABELS = {
+  year: "年度",
+  fes_ordinal: "回数",
+  team: "組",
+} as const satisfies Record<Kind, string>;
 
 function Options(props: { selected?: string }) {
-  const s = () => props.selected;
-  return (
-    <>
-      <option value="year" disabled={s() === "year"}>年度</option>
-      <option value="fes_ordinal" disabled={s() === "fes_ordinal"}>回数</option>
-      <option value="team" disabled={s() === "team"}>組</option>
-    </>
-  );
+  return Object.entries(KIND_LABELS).map(([kind, label]) => (
+    <option value={kind} disabled={props.selected === kind}>{label}</option>
+  ));
 }
 
 export default function KindSelector() {

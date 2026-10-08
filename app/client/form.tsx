@@ -1,21 +1,16 @@
 import { createSignal, type JSX, Match, Switch } from "solid-js";
-import { convert, state } from "./state.ts";
-import YearSelector, { yearConverter } from "./year_selector.tsx";
-import TeamSelector, { teamConverter } from "./team_selector.tsx";
+import { state } from "./state.ts";
+import YearSelector from "./year_selector.tsx";
+import TeamSelector from "./team_selector.tsx";
 import KindSelector from "./kind_selector.tsx";
-import FesOrdinalSelector, {
-  fesOrdinalConverter,
-} from "./fes_ordinal_selector.tsx";
+import FesOrdinalSelector from "./fes_ordinal_selector.tsx";
+import convert from "./converter.tsx";
 
 export default function Form() {
   const [result, setResult] = createSignal<JSX.Element>();
   function handleSubmit(e: SubmitEvent) {
     e.preventDefault();
-    const result = convert(state, {
-      year: yearConverter,
-      team: teamConverter,
-      fes_ordinal: fesOrdinalConverter,
-    });
+    const result = convert(state);
     setResult(result);
   }
   return (

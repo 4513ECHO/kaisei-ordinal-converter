@@ -1,18 +1,7 @@
 import Input from "@/components/Input.tsx";
 import Select from "@/components/Select.tsx";
-import {
-  COLORS,
-  type Converter,
-  setAsInteger,
-  setColor,
-  state,
-} from "./state.ts";
-import {
-  fesFirstYear,
-  formatTeam,
-  getTeamFirstYear,
-  withOrdinalSuffix,
-} from "./utils.ts";
+import { COLORS, setAsInteger, setColor, state } from "./state.ts";
+import { COLORS_JA } from "./utils.ts";
 
 export default function TeamSelector() {
   return (
@@ -38,40 +27,11 @@ export default function TeamSelector() {
         required
       >
         <option hidden disabled selected></option>
-        <option value="purple">紫</option>
-        <option value="white">白</option>
-        <option value="blue">青</option>
-        <option value="green">緑</option>
-        <option value="orange">橙</option>
-        <option value="yellow">黄</option>
-        <option value="red">赤</option>
-        <option value="black">黒</option>
+        {COLORS.map((color, index) => (
+          <option value={color}>{COLORS_JA[index]}</option>
+        ))}
       </Select>
       組
     </div>
   );
 }
-
-export const teamConverter: Converter<"team"> = {
-  fes_ordinal({ team }) {
-    const className = formatTeam(team.color, team.ordinal);
-    return (
-      <>
-        {className}は
-        {withOrdinalSuffix(
-          getTeamFirstYear(team.color) - fesFirstYear + team.ordinal,
-        )}
-        運動会の組です。
-      </>
-    );
-  },
-  year({ team }) {
-    const className = formatTeam(team.color, team.ordinal);
-    return (
-      <>
-        {className}は
-        {team.ordinal + getTeamFirstYear(team.color) - 1}年度の組です。
-      </>
-    );
-  },
-};

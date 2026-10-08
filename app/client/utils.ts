@@ -1,4 +1,4 @@
-import type { Color } from "./state.ts";
+import { type Color, COLORS } from "./state.ts";
 
 const plualRules = new Intl.PluralRules("en", { type: "ordinal" });
 const suffixes: Partial<Record<Intl.LDMLPluralRule, string>> = {
@@ -17,23 +17,35 @@ export function withOrdinalSuffix(ordinal: number): string {
 }
 
 export const fesFirstYear = 1872;
-const teamData = {
-  purple: ["紫", 1957],
-  white: ["白", 1946],
-  blue: ["青", 1946],
-  green: ["緑", 1946],
-  orange: ["橙", 1962],
-  yellow: ["黄", 1946],
-  red: ["赤", 1946],
-  black: ["黒", 1976],
-} as const satisfies Record<Color, [string, number]>;
+
+export const COLORS_JA = [
+  "紫",
+  "白",
+  "青",
+  "緑",
+  "橙",
+  "黄",
+  "赤",
+  "黒",
+] as const;
+
+const TEAM_FIRST_YEARS = [
+  1957, // 紫組
+  1946, // 白組
+  1946, // 青組
+  1946, // 緑組
+  1962, // 橙組
+  1946, // 黄組
+  1946, // 赤組
+  1976, // 黒組
+] as const;
 
 export function formatTeam(color: Color, ordinal: number): string {
-  return `第${ordinal}代${teamData[color][0]}組`;
+  return `第${ordinal}代${COLORS_JA[COLORS.indexOf(color)]}組`;
 }
 
 export function getTeamFirstYear(color: Color): number {
-  return teamData[color][1];
+  return TEAM_FIRST_YEARS[COLORS.indexOf(color)]!;
 }
 
 export function asInteger(x: string): number | null {
