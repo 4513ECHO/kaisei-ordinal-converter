@@ -1,6 +1,6 @@
 import { fileURLToPath } from "node:url";
 import { defineConfig, type Plugin } from "vite";
-import build from "@hono/vite-build/deno";
+import build from "@hono/vite-build/cloudflare-workers";
 import devServer from "@hono/vite-dev-server";
 import adapter from "@hono/vite-dev-server/node";
 import solid from "vite-plugin-solid";
@@ -22,7 +22,7 @@ function client(): Plugin {
 
 export default defineConfig({
   plugins: [
-    build({ staticRoot: "./dist" }),
+    build(),
     devServer({ adapter, entry: "./app/server.ts" }),
     solid({ ssr: true }),
     tailwindcss(),
@@ -30,7 +30,7 @@ export default defineConfig({
     client(),
   ],
   ssr: {
-    external: ["hono", "solid-js"],
+    external: ["solid-js"],
   },
   resolve: {
     alias: {

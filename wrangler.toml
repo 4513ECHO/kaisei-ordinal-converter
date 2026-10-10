@@ -1,0 +1,10 @@
+name = "kaisei-ordinal-converter"
+compatibility_date = "2026-10-10"
+main = "dist/index.js"
+
+[assets]
+directory = "dist"
+
+[observability.logs]
+enabled = true
+invocation_logs = true
