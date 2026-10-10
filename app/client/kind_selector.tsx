@@ -16,7 +16,7 @@ function Options(props: { selected?: string }) {
 
 export default function KindSelector() {
   return (
-    <div class="sm:flex sm:items-center">
+    <fieldset class="kind-selector">
       <label>
         <span class="sr-only">変換元</span>
         <Select
@@ -31,12 +31,12 @@ export default function KindSelector() {
       </label>
       <button
         type="button"
-        class="block p-2 rounded-md sm:inline-block sm:mx-2 disabled:opacity-30 size-10 not-sm:m-2 not-disabled:hover:bg-sky-100"
+        class="p-2 rounded-md disabled:opacity-30 size-10 not-disabled:hover:bg-sky-100"
         onClick={() => swapKind()}
         disabled={!state.kind.to}
         aria-label="変換対象を入れ替え"
       >
-        <ArrowRightLeft class="not-sm:rotate-90" />
+        <ArrowRightLeft />
       </button>
       <label>
         <span class="sr-only">変換先</span>
@@ -51,6 +51,6 @@ export default function KindSelector() {
         </Select>
         <span>に</span>
       </label>
-    </div>
+    </fieldset>
   );
 }

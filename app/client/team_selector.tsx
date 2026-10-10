@@ -5,7 +5,7 @@ import { COLORS_JA } from "./utils.ts";
 
 export default function TeamSelector() {
   return (
-    <div class="p-4">
+    <fieldset class="p-4">
       第
       <Input
         class="max-w-16"
@@ -32,6 +32,6 @@ export default function TeamSelector() {
         ))}
       </Select>
       組
-    </div>
+    </fieldset>
   );
 }
