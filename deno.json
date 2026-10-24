@@ -40,13 +40,14 @@
     "vite": "npm:vite@^8.3.2",
     "vite-plugin-lucide-preprocess": "npm:vite-plugin-lucide-preprocess@^1.8.0",
     "vite-plugin-solid": "npm:vite-plugin-solid@^2.11.14",
+    "vite-ssr-components": "npm:vite-ssr-components@^0.9.0",
     "wrangler": "npm:wrangler@^4.149.0"
   },
   "nodeModulesDir": "auto",
   "tasks": {
     "check": "deno fmt --check && deno lint && deno check",
     "dev": "vite",
-    "build": "vite build --mode client && vite build",
+    "build": "vite build",
     "start": "deno serve -ER=. dist/index.js",
     "deploy": "wrangler deploy"
   }

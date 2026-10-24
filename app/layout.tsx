@@ -1,5 +1,5 @@
 import type { ParentProps } from "solid-js";
-import { Link, Script } from "./components/manifest_helper.tsx";
+import { Link, Script } from "vite-ssr-components/solid";
 
 const title = "開成大運動会 序数変換ツール";
 const description =

@@ -11,7 +11,9 @@
     "npm:tailwindcss@^4.3.3": "4.3.3",
     "npm:vite-plugin-lucide-preprocess@^1.8.0": "1.8.0_vite@8.3.2",
     "npm:vite-plugin-solid@^2.11.14": "2.11.14_solid-js@1.9.15_vite@8.3.2",
+    "npm:vite-ssr-components@0.9": "0.9.0",
     "npm:vite@^8.3.2": "8.3.2",
+    "npm:wrangler@*": "4.149.0",
     "npm:wrangler@^4.149.0": "4.149.0"
   },
   "npm": {
@@ -1338,6 +1340,14 @@
         "vitefu"
       ]
     },
+    "vite-ssr-components@0.9.0": {
+      "integrity": "sha512-ijosdvUAv6GsXiTQPE8AY9+YxDTaE9/DuCtnGH7aDhgNB6jz8+CgIUTJ/Nw35Slq1cmbWyoyegsKFPYrBKEk/A==",
+      "dependencies": [
+        "@babel/parser",
+        "@babel/traverse",
+        "picomatch"
+      ]
+    },
     "vite@8.3.2": {
       "integrity": "sha512-SQr1x6W5vVSbROg7vsyXIaxK9b0G7zsT68acdWWRmnBUsgDieLCRG+Rep9WdZgcposvv/GSnr4GUUBqB3vXq6w==",
       "dependencies": [
@@ -1426,6 +1436,7 @@
       "npm:tailwindcss@^4.3.3",
       "npm:vite-plugin-lucide-preprocess@^1.8.0",
       "npm:vite-plugin-solid@^2.11.14",
+      "npm:vite-ssr-components@0.9",
       "npm:vite@^8.3.2",
       "npm:wrangler@^4.149.0"
     ]
